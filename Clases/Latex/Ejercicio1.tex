@@ -1,0 +1,54 @@
+\documentclass{article}
+    \usepackage[utf8]{inputenc}
+    \usepackage[spanish,activeacute]{babel}
+    \input{Algo1Macros.tex}
+    \usepackage{caratula}
+    \begin{document}
+    
+    %Carátula
+    \titulo{Titulo}
+    \subtitulo{subtitulo}
+    \fecha{fecha}
+    \materia{materia}
+    \submateria{test}
+    \integrante{Fulanito, Cosme}{000/17}{fulanito.cosme@gmail.com}
+    \integrante{Bond, James}{007/17}{bond.james@gmail.com}
+    \maketitle
+    
+    %Creación de índice
+    \tableofcontents
+    \newpage
+    
+    \section{Factorial}
+        
+                El factorial de un entero positivo n, el factorial de n o n factorial se define en principio como el producto de todos los números enteros positivos desde 1 (es decir, los números naturales) hasta n. Por ejemplo,\\
+        
+                $5! = 1 \times 2 \times 3 \times 4 \times 5 = 120$\\
+        
+                La operación de factorial aparece en muchas áreas de las matemáticas, particularmente en combinatoria y análisis matemático. De manera fundamental el factorial de n representa el número de formas distintas de ordenar n objetos distintos (elementos sin repetición). Este hecho ha sido conocido desde hace varios siglos, en el siglo XII por parte de estudiosos hindúes.
+                
+                \subsection{Definición}
+        
+                    La función factorial es formalmente definida mediante el producto (si n es mayor a 0)\\
+                    $n! = \prod_{k=1}^{n} k$\\
+                    Una extensión común es:\\
+                    $0! = 1$
+        
+                \subsection{Especificación}
+        
+                    A continuación mostramos la especificación de la función factorial:\\
+                    
+                    \begin{proc}{factorial}{\In n: \ent, \Out result: \ent}{}
+                    \pre{n \geq 0}
+                    \post{(n = 0 \Then result = 1)\wedge(n > 0 \Then result = \prod_{k = 1}^{n} k)}
+                    \end{proc}
+                \subsection{Implementación recursiva}
+        
+                    Aquí podemos ver una implementación recursiva:
+        
+                    \begin{verbatim}
+                        factorial n | n == 0 = 1
+                                    | n > 0 = n * factorial (n-1)
+                    \end{verbatim}
+    
+    \end{document}
