@@ -1,0 +1,26 @@
+\documentclass{article}
+    \usepackage[utf8]{inputenc}
+    \usepackage[spanish,activeacute]{babel}
+    \input{Algo1Macros.tex}
+
+\begin{document}
+
+    \section{}
+        \begin{proc}{divide}{\In v: vector\textless\ent\textgreater, \In n: \ent, \Out res: \bool}{}
+            \pre{n \neq 0}
+            \post{res = \True \Iff (\forall i: \ent) ((i \in v) \Then ($i mod n = 0$))}
+        \end{proc}
+
+    \section{}
+        \begin{proc}{maximo}{\In v: vector\textless\ent\textgreater, \Out res: \ent}{}
+            \pre{\longitud{v} > 0}
+            \post{res = i \Iff (\forall j: \ent) ((i, j \in v) \Then ($i \textgreater j$))}
+        \end{proc}
+
+    \section{}
+        \begin{proc}{pertenece}{\In elem: \ent, \In v: vector\textless\ent\textgreater, \Out res: \bool}{}
+            \pre{\True}
+            \post{res = \True \Iff (\exists i: \ent) ((0 \textless i \textless \longitud{v}) \yLuego ($v[i] = elem$))}
+        \end{proc}
+
+\end{document}

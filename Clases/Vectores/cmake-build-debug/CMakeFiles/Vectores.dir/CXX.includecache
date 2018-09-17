@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/Vectores/ejercicios.cpp
+ejercicios.h
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/Vectores/ejercicios.h
+
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/Vectores/ejercicios.h
+iostream
+-
+vector
+-
+utility
+-
+
