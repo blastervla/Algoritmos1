@@ -33,6 +33,7 @@
 
 # IDE
 .idea
+.idea/*
 
 # System
 .DS_STORE
