@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.12)  25 SEP 2018 20:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.12)  30 SEP 2018 16:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -765,69 +765,64 @@ LaTeX Font Info:    Try loading font information for U+dsrom on input line 39.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
-Overfull \hbox (3.23477pt too wide) in paragraph at lines 111--111
- []\OT1/cmtt/m/n/10 Post \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 primos \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 $ \OT1/cmr/m/n/10 ((\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 k \OT1/cmr/m/n/10 : \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 )((\OML/cmm/m/it/10 k > \OT1/cmr/m/n/10 0) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1 = \OML/cmm/m/it/10 evolucionarToroideMultiple\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; k\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 _[]
+Overfull \hbox (28.91202pt too wide) in paragraph at lines 119--119
+ [][]\OMS/cmsy/m/n/10 ![] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 cantidadDeTicksHastaMuerte\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1]) \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 cantidadDeTicksHastaMuerte\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ]))) \OMS/cmsy/m/n/10 ^[]
  []
 
 
-Overfull \hbox (2.19011pt too wide) in paragraph at lines 118--118
- \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 cantidadDeTicksHastaMuerte\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1]) \OMS/cmsy/m/n/10 ^^U \OML/cmm/m/it/10 cantidadDeTicksHastaMuerte\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ]))))$\OMS/cmsy/m/n/10 g 
- []
-
-
-Overfull \hbox (38.18254pt too wide) in paragraph at lines 121--121
+Overfull \hbox (38.18254pt too wide) in paragraph at lines 122--122
  []\OT1/cmtt/m/n/10 pred todosToroidesValidos \OT1/cmr/m/n/10 (ts: $\OML/cmm/m/it/10 seq\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 toroide\OMS/cmsy/m/n/10 i$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 t \OT1/cmr/m/n/10 :$toroide$)((\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 ) [][]\OMS/cmsy/m/n/10 ![] \OML/cmm/m/it/10 esToroideValido\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ))$\OMS/cmsy/m/n/10 g 
  []
 
 [1]
-Overfull \hbox (19.60832pt too wide) in paragraph at lines 140--140
+Overfull \hbox (19.60832pt too wide) in paragraph at lines 143--143
  []\OT1/cmtt/m/n/10 Pre \OMS/cmsy/m/n/10 f$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 esToroideValido\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 esToroideValido\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2)) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) = \OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2) \OMS/cmsy/m/n/10 ^[] \OML/cmm/m/it/10 columnas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) =
  []
 
 
-Overfull \hbox (15.8455pt too wide) in paragraph at lines 143--143
+Overfull \hbox (15.8455pt too wide) in paragraph at lines 146--146
  []\OT1/cmtt/m/n/10 Post \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 res \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 tf \OMS/cmsy/m/n/10 $ \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 tf \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 toroide\OT1/cmr/m/n/10 )((\OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 tf\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) \OMS/cmsy/m/n/10 ^[] \OML/cmm/m/it/10 columnas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 tf\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 columnas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1)) \OMS/cmsy/m/n/10 ^[]
  []
 
 
-Overfull \hbox (51.94049pt too wide) in paragraph at lines 143--143
+Overfull \hbox (51.94049pt too wide) in paragraph at lines 146--146
  \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i; j \OT1/cmr/m/n/10 : \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 )((\OML/cmm/m/it/10 enRango\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 tf; i; j\OT1/cmr/m/n/10 )) [][]\OMS/cmsy/m/n/10 ![] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 estaViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 tf; i; j\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 $ \OML/cmm/m/it/10 estaViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; i; j\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^[] \OML/cmm/m/it/10 estaViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; i; j\OT1/cmr/m/n/10 ))))$\OMS/cmsy/m/n/10 g 
  []
 
 
-Overfull \hbox (19.60832pt too wide) in paragraph at lines 150--150
- []\OT1/cmtt/m/n/10 Pre \OMS/cmsy/m/n/10 f$\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 esToroideValido\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 esToroideValido\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2)) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) = \OML/cmm/m/it/10 filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 2) \OMS/cmsy/m/n/10 ^[] \OML/cmm/m/it/10 columnas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 1) =
+Overfull \hbox (57.20944pt too wide) in paragraph at lines 171--171
+ \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 ts \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 seq\OMS/cmsy/m/n/10 h$\OT1/cmr/m/n/10 toroide$\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )((\OML/cmm/m/it/10 compuestoPorVistasTrasladadas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts; t\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^ \OML/cmm/m/it/10 ordenadoSuperficieAscendente\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 ))[] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 169.
+
+Overfull \hbox (9.90163pt too wide) in paragraph at lines 194--194
+ \OT1/cmr/m/n/10 (\U/dsrom/m/n/10 Z \OMS/cmsy/m/n/10 ^^B \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (\U/dsrom/m/n/10 Z \OMS/cmsy/m/n/10 ^^B \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 ))((\OML/cmm/m/it/10 rect \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 rs\OT1/cmr/m/n/10 ) [][]\OMS/cmsy/m/n/10 ![] \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 contarVivasEnArea\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; rect\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 cantidadVivas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )))$\OMS/cmsy/m/n/10 g 
+ []
+
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 210.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 169.
-
-Overfull \hbox (41.91133pt too wide) in paragraph at lines 190--190
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 210.
+ [2]
+Overfull \hbox (41.91133pt too wide) in paragraph at lines 231--231
 []\OT1/cmtt/m/n/10 pred enRango \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , i: $\U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 , j: $\U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$[] \OT1/cmr/m/n/10 (0 \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 i < filas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 (0 \OMS/cmsy/m/n/10 ^^T \OML/cmm/m/it/10 j < columnas\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )) [] [] [] [] []$\OMS/cmsy/m/n/10 g 
  []
 
 
-Overfull \hbox (4.50822pt too wide) in paragraph at lines 197--197
+Overfull \hbox (4.50822pt too wide) in paragraph at lines 238--238
 []\OT1/cmtt/m/n/10 aux cantidadVivas \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 ) : $\U/dsrom/m/n/10 Z$ \OT1/cmr/m/n/10 = $[]([] [] \OML/cmm/m/it/10 estaViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ]) [] 1 [] 0 [])$\OT1/cmr/bx/n/10 ; 
  []
 
 
-Overfull \hbox (79.72684pt too wide) in paragraph at lines 203--203
-[]\OT1/cmtt/m/n/10 pred vivaLuegoDeEvolucion \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , pos: $\U/dsrom/m/n/10 Z \OMS/cmsy/m/n/10 ^^B \U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 seMantieneViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 _[] \OML/cmm/m/it/10 vivePorReproduccion\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 )$\OMS/cmsy/m/n/10 g 
- []
-
-[2]
-Overfull \hbox (26.84122pt too wide) in paragraph at lines 235--235
-[]\OT1/cmtt/m/n/10 aux evolucionarToroide \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 ) : $\OML/cmm/m/it/10 toroide$ \OT1/cmr/m/n/10 = $\OML/cmm/m/it/10 te \OMS/cmsy/m/n/10 $ \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 te \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 toroide\OT1/cmr/m/n/10 )(\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i; j \OT1/cmr/m/n/10 : \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 enRango\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; i; j\OT1/cmr/m/n/10 ) [][]\OMS/cmsy/m/n/10 ![]
+Overfull \hbox (84.97679pt too wide) in paragraph at lines 244--244
+[]\OT1/cmtt/m/n/10 pred valorLuegoDeEvolucion \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , pos: $\U/dsrom/m/n/10 Z \OMS/cmsy/m/n/10 ^^B \U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 seMantieneViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 _[] \OML/cmm/m/it/10 vivePorReproduccion\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 )$\OMS/cmsy/m/n/10 g 
  []
 
 
-Overfull \hbox (26.85722pt too wide) in paragraph at lines 241--241
-[]\OT1/cmtt/m/n/10 aux evolucionarToroideMultiple \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , k: $\U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 ) : $\OML/cmm/m/it/10 toroide$ \OT1/cmr/m/n/10 = $\OML/cmm/m/it/10 ts\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1] \OMS/cmsy/m/n/10 $ \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 ts \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 seq\OMS/cmsy/m/n/10 h\OML/cmm/m/it/10 toroide\OMS/cmsy/m/n/10 i\OT1/cmr/m/n/10 )((\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 :
+Overfull \hbox (38.33968pt too wide) in paragraph at lines 280--280
+[]\OT1/cmtt/m/n/10 pred esEvolucion \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , te: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 mismaDimension\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; te\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i; j \OT1/cmr/m/n/10 : \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 enRango\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; i; j\OT1/cmr/m/n/10 ) [][]\OMS/cmsy/m/n/10 ![]
  []
 
 [3] (./solucion.aux
@@ -842,11 +837,11 @@ Here is how much of TeX's memory you used:
  9137 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  50i,8n,45p,562b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb>
-Output written on solucion.pdf (4 pages, 521845 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb>
+Output written on solucion.pdf (4 pages, 532976 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
