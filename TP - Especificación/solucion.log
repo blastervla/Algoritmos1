@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.12)  30 SEP 2018 16:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.12)  1 OCT 2018 10:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -816,12 +816,7 @@ Overfull \hbox (4.50822pt too wide) in paragraph at lines 238--238
  []
 
 
-Overfull \hbox (84.97679pt too wide) in paragraph at lines 244--244
-[]\OT1/cmtt/m/n/10 pred valorLuegoDeEvolucion \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , pos: $\U/dsrom/m/n/10 Z \OMS/cmsy/m/n/10 ^^B \U/dsrom/m/n/10 Z$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 seMantieneViva\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 _[] \OML/cmm/m/it/10 vivePorReproduccion\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; pos\OT1/cmr/m/n/10 )$\OMS/cmsy/m/n/10 g 
- []
-
-
-Overfull \hbox (38.33968pt too wide) in paragraph at lines 280--280
+Overfull \hbox (38.33968pt too wide) in paragraph at lines 284--284
 []\OT1/cmtt/m/n/10 pred esEvolucion \OT1/cmr/m/n/10 (t: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 , te: $\OML/cmm/m/it/10 toroide$\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 f$\OML/cmm/m/it/10 mismaDimension\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; te\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^[] \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 i; j \OT1/cmr/m/n/10 : \U/dsrom/m/n/10 Z\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 enRango\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t; i; j\OT1/cmr/m/n/10 ) [][]\OMS/cmsy/m/n/10 ![]
  []
 
@@ -830,15 +825,15 @@ LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 ) ) 
 Here is how much of TeX's memory you used:
- 13794 strings out of 492649
- 244191 string characters out of 6129622
+ 13795 strings out of 492649
+ 244199 string characters out of 6129622
  325547 words of memory out of 5000000
- 17351 multiletter control sequences out of 15000+600000
+ 17352 multiletter control sequences out of 15000+600000
  9137 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  50i,8n,45p,562b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb>
-Output written on solucion.pdf (4 pages, 532976 bytes).
+Output written on solucion.pdf (4 pages, 533295 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  58 compressed objects within 1 object stream

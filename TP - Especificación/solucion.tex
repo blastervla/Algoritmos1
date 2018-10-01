@@ -63,18 +63,18 @@
     %   - Viva con 2 o 3 adyacentes vivas --> vive
     %   - Viva con > 3 adyacentes vivas --> muere
     %   - Muerta con 3 adyacentes vivas --> vive
-    \post{result = \True \Iff valorLuegoDeEvolucion(t, posicion)} % estaViva y tiene 2 o 3 adyacentes o ¬estaViva y tiene 3 adyacentes
+    \post{result = valorLuegoDeEvolucion(t, posicion)} % estaViva y tiene 2 o 3 adyacentes o ¬estaViva y tiene 3 adyacentes
     
 \end{proc}
 
 % 5. Dado un toroide lo evoluciona un tick.
 \begin{proc}{evolucionToroide}{\Inout t: $toroide$}{}
-    \pre{esToroideValido(t) \yLuego t = t0}
+    \pre{esToroideValido(t) \yLuego t = T0}
     % Quizás usando una sumatoria que recorra todo el toroide (actually, son 2)
     % Y que en cada término de la sumatoria cambie el estado de esa posicion
     % Alternativa (me gusta más): Definimios la metavariable t1, t = t2 sí y sólo sí cada 
     % posición de t2 es igual a dicha posición de t1 pero evolucionada
-    \post{esEvolucion(t0, t)}
+    \post{esEvolucion(T0, t)}
 \end{proc}
 
 % 6. Dado un toroide t y un natural k, devuelve el toroide resultante de evolucionar 
@@ -239,8 +239,12 @@
 
 % ===================
 % === Ejercicio 4 ===
-    \pred{valorLuegoDeEvolucion}{t: $toroide$, pos: $\ent \times \ent$}{
-        seMantieneViva(t, pos) \oLuego vivePorReproduccion(t, pos)
+    \aux{valorLuegoDeEvolucion}{t: $toroide$, pos: $\ent \times \ent$}{\bool}{
+        \\\IfThenElse{seMantieneViva(t, pos) \oLuego vivePorReproduccion(t, pos)}{
+            \True
+        }{
+            \False
+        }
     }
     \pred{seMantieneViva}{t: $toroide$, pos: $\ent \times \ent$}{
         estaViva(t[posicion_0][posicion_1]) \yLuego 2 \leq vivasAdyacentes(t, posicion) \leq 3
@@ -249,21 +253,21 @@
         (\neg estaViva(t[posicion_0][posicion_1]) \yLuego vivasAdyacentes(t, posicion) = 3)
     }
     \aux{vivasAdyacentes}{t: $toroide$, pos: $\ent \times \ent$}{\ent}{
-        \displaystyle\\(\sum_{i=-1}^1 \sum_{j=-1}^1 \IfThenElse{valorPosicionNormalizada(t, (pos_0 + i, pos_1 + j))}{ 1 }{ 0 }) 
+        \displaystyle\\(\sum_{i=-1}^1 \sum_{j=-1}^1 \IfThenElse{valorPosicionNormalizada(t, (pos_0 + i, pos_1 + j)) = \True}{ 1 }{ 0 }) 
         \\- (\IfThenElse{estaViva(t, pos_0, pos_1)}{1}{0})
     }
-    \pred{valorPosicionNormalizada}{t: $toroide$, pos: $\ent \times \ent$}{
+    \aux{valorPosicionNormalizada}{t: $toroide$, pos: $\ent \times \ent$}{\bool}{
         \\t[normalizarIndice(filas(t), pos_0)][normalizarIndice(columnas(t), pos_1)]
     \\}
     \aux{normalizarIndice}{limite: \ent, i: \ent}{\ent}{
         \IfThenElse{i < 0}{
             (i + limite)
         }{\\
-            \IfThenElse{i \geq limite}{
+            (\IfThenElse{i \geq limite}{
                 (i - limite)
             }{
                 i
-            }
+            })
         }
     }
 
@@ -283,18 +287,26 @@
 % === Ejercicio 6 ===
 
     \pred{esEvolucionMultiple}{t: $toroide$, te: $toroide$, k: \ent}{
-        (\exists ts: \TLista{toroide})((length(ts) = k)(\forall i: \ent)((0 < i < k)\implicaLuego(esEvolucion(ts[i - 1], ts[i])))\yLuego te = ts[k - 1])
+        (\exists ts: \TLista{toroide})((length(ts) = k + 1) \yLuego ts[0] = t \yLuego ordenadaPorEvolucion(ts) \yLuego te = ts[k])
     }
 
-\section{Decisiones tomadas}
+    \pred{ordenadaPorEvolucion}{ts: $\TLista{toroide}$}{
+        (\forall i: \ent)((0 < i \leq k)\implicaLuego\\esEvolucion(ts[i - 1], ts[i]))
+    }
+
 %====================
 
+%====================
 % === Ejercicio 11 ==
 
 \pred{esVistaTrasladada}{t1: $toroide$, t2: $toroide$}{
     (\exists i, j: \ent)(
             \\(\forall x, y : \ent)(enRango(t1, x, y)\implicaLuego(t1[x][y] = valorPosicionNormalizada(t2, (x + i, y + j)))))
 }
+
+\section{Decisiones tomadas}
+Intuimos que una posición tiene 8 adyacentes independientemente del tamaño del toroide, 
+implicando esto que dentro de las adyacentes a una posición se pueden contar posiciones repetidas
 % Sólo para decisiones de alto nivel, no para explicar la solución a los ejercicios: CONSULTAR!
 
 \end{document}
