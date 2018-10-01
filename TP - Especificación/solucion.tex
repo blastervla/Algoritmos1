@@ -99,17 +99,14 @@
     \pre{esToroideValido(t)}
     \post{result = \True \Iff (\exists ks: \TLista{\ent})(length(ks) > 0 \yLuego ks[0] > 0 \yLuego ordenadaDeMenorAMayor(ks) \yLuego esListaDePeriodicos(t, ks) \yLuego p = ks[0]}
 
-    \pred{ordenadaDeMenorAMayor}{ks: $\TLista{\ent}$}{
-        (\forall i: \ent)((0 < i < length(ks))\implicaLuego(ks[i - 1] < ks[i]))
-    }
     \pred{esListaDePeriodicos}{t: $toroide$, ks: $\TLista{\ent}$}{
-        \\(\exists ts: \TLista{toroide})(length(ts) = length(ks) \yLuego t = ts[0] \\\yLuego (\forall i: \ent)((0 \leq i < length(ts))\implicaLuego esEvolucionMultiple(t, ts[i], ks[i])))
+        \\(\exists ts: \TLista{toroide})(length(ts) = length(ks) \yLuego esEvolucion(t, ts[0]) \\\yLuego (\forall i: \ent)((0 \leq i < length(ts))\implicaLuego esEvolucionMultiple(t, ts[i], ks[i])))
     }
 \end{proc}
 
 % 8. Dados dos toroides, devuelve si uno es la evolución múltiple del otro.
 \begin{proc}{primosLejanos}{\In t1: $toroide$, \In t2: $toroide$, \Out primos: $\bool$}{}
-    \pre{esToroideValido(t1) \land esToroideValido(t2)}
+    \pre{esToroideValido(t1) \land esToroideValido(t2) \yLuego mismaDimension(t1, t2)}
     \post{primos = \True \Iff 
     ((\exists k: \ent)((k > 0)\yLuego(
         (esEvolucionMultiple(t1, t2, k))
@@ -123,7 +120,8 @@
 \begin{proc}{seleccionNatural}{\In ts: $\TLista{toroide}$, \Out res: $\ent$}{}
     \pre{todosToroidesValidos(ts) \yLuego algunToroideMuere(ts)}
 
-    \post{(\exists is: \TLista{\ent})((\forall i: \ent)(((i \in is)\yLuego(0 < i < length(is)))\\\implicaLuego(cantidadDeTicksHastaMuerte(ts[i - 1]) \geq cantidadDeTicksHastaMuerte(ts[i])))\yLuego res = is[0])}
+    \post{(\exists is: \TLista{\ent})(length(is) = length(ts) \\\yLuego ordenadaDeMayorAMenorPorCantidadDeTicksHastaMuerte(ts, is) 
+    \\\yLuego res = is[0])}
     \pred{todosToroidesValidos}{ts: $\TLista{toroide}$}{
         (\forall t: $toroide$)((t \in ts) \implicaLuego esToroideValido(t))
     }
@@ -131,9 +129,13 @@
         (\exists t: $toroide$)((t \in ts)\yLuego(muere(t)))
     }
 
+    \pred{ordenadaDeMayorAMenorPorCantidadDeTicksHastaMuerte}{ts: $\TLista{toroide}$, is: $\TLista{\ent}$}{
+        (\forall i: \ent)(((i \in is)\yLuego(0 < i < length(is)))\\\implicaLuego(cantidadDeTicksHastaMuerte(ts[i - 1]) \geq cantidadDeTicksHastaMuerte(ts[i])))
+    }
+
     \aux{cantidadDeTicksHastaMuerte}{t: $toroide$}{\ent} {
-        \\\IfThenElse{(\exists tx: $toroide$)((\forall x \in tx)\implicaLuego \neg estaViva(x))\yLuego(\exists is: \TLista{\ent})((\forall i : \ent)((0 < i < length(is))\implicaLuego((is[i - 1] < is[i]) \yLuego esEvolucionMultiple(t, tx, is[i - 1])))))}{
-            is[0]
+        \\\IfThenElse{(\exists tx: $toroide$)(mismaDimension(t, tx) \yLuego cantidadVivas(tx) = 0)\yLuego(\exists ks: \TLista{\ent})(length(ks) > 0 \yLuego ks[0] > 0 \yLuego ordenadaDeMenorAMayor(is) \yLuego esEvolucionMultiple(t, tx, ks[i - 1]))}{
+            ks[0]
         \\}{
             -1
         }
@@ -291,6 +293,7 @@
     }
 %====================
 
+%====================
 % === Ejercicio 6 ===
 
     \pred{esEvolucionMultiple}{t: $toroide$, te: $toroide$, k: \ent}{
@@ -299,6 +302,15 @@
 
     \pred{ordenadaPorEvolucion}{ts: $\TLista{toroide}$}{
         (\forall i: \ent)((0 < i \leq k)\implicaLuego\\esEvolucion(ts[i - 1], ts[i]))
+    }
+
+%====================
+
+%====================
+% === Ejercicio 7 ===
+
+\pred{ordenadaDeMenorAMayor}{ks: $\TLista{\ent}$}{
+        (\forall i: \ent)((0 < i < length(ks))\implicaLuego(ks[i - 1] < ks[i]))
     }
 
 %====================
