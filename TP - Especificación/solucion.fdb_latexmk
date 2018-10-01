@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1538418029 "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" "solucion.pdf" "solucion" 1538418030
-  "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" 1538418029 14498 09076c1819188613c2c782523b269173 ""
+["pdflatex"] 1538437829 "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" "solucion.pdf" "solucion" 1538437830
+  "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" 1538437829 15928 66953d7b482807519d7a1fab1933d486 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1480098698 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -159,13 +159,13 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1523934492 2717033 f61a5287d9c22a39a74f1979fe3f905c ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1536757535 4220280 e72472c6d432f06c31bb667aa4e5d2f0 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "Algo1Macros.tex" 1537208140 17567 948e3e4400d1a21f94b521f61dba0443 ""
+  "Algo1Macros.tex" 1538436952 17921 ae0dfbb7d454684e7413df6b93857dd6 ""
   "caratula.sty" 1502831690 11654 be9ddba2b5caefbc3dbd45b3ba82b4fa ""
   "logo_dc.jpg" 1502831690 128041 19e4b2b1b4914681ffe3d5d821eeea3c ""
   "logo_uba.jpg" 1502831690 229119 10f3a63be47e1e95e44f30008ec3af50 ""
-  "solucion.aux" 1538418030 378 20d14fe6a184189861ba5e1f7f135d22 ""
-  "solucion.tex" 1538418029 14498 09076c1819188613c2c782523b269173 ""
+  "solucion.aux" 1538437830 1355 a5df10107a9d010a79e435efc73c352a ""
+  "solucion.tex" 1538437829 15928 66953d7b482807519d7a1fab1933d486 ""
   (generated)
   "solucion.pdf"
-  "solucion.log"
   "solucion.aux"
+  "solucion.log"

@@ -251,13 +251,24 @@ Primer Cuatrimestre 2018\\
 \newcommand{\selector}[2]{#1~\ensuremath{\leftarrow}~#2}
 \newcommand{\selec}{\ensuremath{\leftarrow}}
 
+\newcommand{\breakAndSpace}[1]{\\\hspace*{#1}}
+\newcommand{\tab}{\hspace{4em}}
+
 \newcommand{\pred}[3]{%
     {\normalfont\bfseries\ttfamily pred }%
     {\normalfont\ttfamily #1}%
     \ifthenelse{\equal{#2}{}}{}{\ (#2) }%
-    \{\ensuremath{#3}\}%
+    \{\breakAndSpace{1em}\ensuremath{#3}\breakAndSpace{-1.5em}\}%
     {\normalfont\bfseries\,\par}%
   }
+
+\newcommand{\gPred}[3]{%
+  {\normalfont\bfseries\ttfamily pred }%
+  {\normalfont\ttfamily #1}%
+  \ifthenelse{\equal{#2}{}}{}{\ (#2) }%
+  \{\breakAndSpace{4em}\ensuremath{#3}\breakAndSpace{1.5em}\}%
+  {\normalfont\bfseries\,\par}%
+}
 
 \newenvironment{proc}[4][res]{%
   % El parametro 1 (opcional) es el nombre del resultado
