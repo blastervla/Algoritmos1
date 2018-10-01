@@ -97,7 +97,14 @@
 % exactamente la misma configuración que tenía originalmente.
 \begin{proc}{esPeriodico}{\In t: $toroide$, \Inout p: $\ent$, \Out result: $\bool$}{}
     \pre{esToroideValido(t)}
-    \post{(result = \True) \Iff (\exists ks: \TLista{\ent})((\forall i: \ent)((0 < i < length(ks))\implicaLuego((ks[i - 1] > 0) \yLuego (ks[i - 1] < ks[i]))\yLuego p = ks[0]}
+    \post{result = \True \Iff (\exists ks: \TLista{\ent})(length(ks) > 0 \yLuego ks[0] > 0 \yLuego ordenadaDeMenorAMayor(ks) \yLuego esListaDePeriodicos(t, ks) \yLuego p = ks[0]}
+
+    \pred{ordenadaDeMenorAMayor}{ks: $\TLista{\ent}$}{
+        (\forall i: \ent)((0 < i < length(ks))\implicaLuego(ks[i - 1] < ks[i]))
+    }
+    \pred{esListaDePeriodicos}{t: $toroide$, ks: $\TLista{\ent}$}{
+        \\(\exists ts: \TLista{toroide})(length(ts) = length(ks) \yLuego t = ts[0] \\\yLuego (\forall i: \ent)((0 \leq i < length(ts))\implicaLuego esEvolucionMultiple(t, ts[i], ks[i])))
+    }
 \end{proc}
 
 % 8. Dados dos toroides, devuelve si uno es la evolución múltiple del otro.

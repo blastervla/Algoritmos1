@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1538398809 "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" "solucion.pdf" "solucion" 1538398810
-  "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" 1538398809 13744 ce809f1b6c8d484a70a550999b0dbaec ""
+["pdflatex"] 1538413591 "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" "solucion.pdf" "solucion" 1538413591
+  "/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/TP - Especificación/solucion.tex" 1538413591 14150 d28ff0369161c825993d9afb59e3a120 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1480098698 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -163,9 +163,9 @@
   "caratula.sty" 1502831690 11654 be9ddba2b5caefbc3dbd45b3ba82b4fa ""
   "logo_dc.jpg" 1502831690 128041 19e4b2b1b4914681ffe3d5d821eeea3c ""
   "logo_uba.jpg" 1502831690 229119 10f3a63be47e1e95e44f30008ec3af50 ""
-  "solucion.aux" 1538398809 378 6ae61ddcd6c9283539514c2b39a28740 ""
-  "solucion.tex" 1538398809 13744 ce809f1b6c8d484a70a550999b0dbaec ""
+  "solucion.aux" 1538413591 378 6ae61ddcd6c9283539514c2b39a28740 ""
+  "solucion.tex" 1538413591 14150 d28ff0369161c825993d9afb59e3a120 ""
   (generated)
-  "solucion.aux"
   "solucion.log"
   "solucion.pdf"
+  "solucion.aux"
