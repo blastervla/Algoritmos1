@@ -162,7 +162,7 @@
     \pre{(esToroideValido(t1) \land esToroideValido(t2)) \yLuego mismaDimension(t1, t2)}
     % res = tf <=> para todo i,j estaViva(tf[i][j]) 
     % <=> estaViva(t1[i][j]) y estaViva(t2[i][j])
-    \post{(filas(res) = filas(t1) \yLuego columnas(res) = columnas(t1))\yLuego\breakAndSpace{1.3em}(\forall i, j: \ent)((enRango(res, i, j))\implicaLuego(estaViva(res, i, j) \breakAndSpace{1.1em}\Iff estaViva(t1, i, j) \yLuego estaViva(t2, i, j)))}
+    \post{mismaDimension(res, t1)\yLuego\breakAndSpace{1.3em}(\forall i, j: \ent)((enRango(res, i, j))\implicaLuego(estaViva(res, i, j) \breakAndSpace{1.1em}\Iff estaViva(t1, i, j) \land estaViva(t2, i, j)))}
 \end{proc}
 
 \subsection{vistaTrasladada}
@@ -191,7 +191,7 @@
     }
 
     \pred{tieneLaMenorSuperficieDelToroide}{t: $toroide$}{
-        (\forall x: toroide)((x \neq t) \yLuego esVistaTrasladada(t, x) \yLuego esSuperficieMayorOIgual(x, t))
+        (\forall x: toroide)(((x \neq t) \land esVistaTrasladada(t, x)) \implicaLuego esSuperficieMayorOIgual(x, t))
     }
 
     % \pred{compuestoPorVistasTrasladadas}{ts: \TLista{$toroide$}, t: $toroide$}{
@@ -211,7 +211,7 @@
         % misma cantidad que nuestro toroide original
         % (\exists rs: \TLista{(\ent \times \ent)\times(\ent \times \ent)})
         % \\(mantienenCantidadVivas(rs, t)\yLuego sonRectangulosDeToroide(rs, t)\\\yLuego ordenadoPorAreaAscendente(rs) \yLuego s = area(rs[0]))
-        (\exists rect: (\ent \times \ent)\times(\ent \times \ent))(mantieneCantidadVivas(rect, t) \yLuego esRectanguloDeToroide(rect, t) \breakAndSpace{1em}\yLuego esElMenorRectangulo(rect, t) \yLuego area(rect) = s)
+        (\exists rect: (\ent \times \ent)\times(\ent \times \ent))(esRectanguloDeToroide(rect, t) \yLuego mantieneCantidadVivas(rect, t) \breakAndSpace{1em}\yLuego esElMenorRectangulo(rect, t) \yLuego area(rect) = s)
     }
     \pred{mantieneCantidadVivas}{rect: $(\ent \times \ent)\times(\ent \times \ent)$, t: $toroide$}{
         /* rect = (xStart, yStart) \times (xEnd, yEnd) */\breakAndSpace{1em}
@@ -262,7 +262,7 @@
         x = \True
     }
     \gPred{enRango}{t: $toroide$, i: \ent, j: \ent}{
-        \IfThenElse{(0 \leq i < filas(t)) \yLuego (0 \leq j < columnas(t))}{\True}{\False}
+        (0 \leq i < filas(t)) \yLuego (0 \leq j < columnas(t))
     }
 
 %====================
