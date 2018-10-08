@@ -1,0 +1,356 @@
+\documentclass[a4paper]{article}
+\input{Algo1Macros}
+
+\usepackage{a4wide}
+\usepackage{amsmath, amscd, amssymb, amsthm, latexsym}
+\usepackage[spanish,activeacute]{babel}
+\usepackage{enumerate}
+
+\setlength{\parskip}{0.1em}
+\usepackage{caratula} % Version modificada para usar las macros de algo1 de ~> https://github.com/bcardiff/dc-tex
+
+\begin{document}
+
+\titulo{TP de Especificación}
+\subtitulo{Juego de la vida toroidal}
+\fecha{\today}
+\materia{Algoritmos y Estructuras de Datos I}
+\grupo{Grupo: Java the Hutt$;$}
+
+\newcommand{\senial}{\textit{se\~nal}}
+
+% Pongan cuantos integrantes quieran
+\integrante{Pomsztein, Vladimir}{364/18}{blastervla@gmail.com}
+\integrante{Zinik, Luciano}{290/17}{lzinik@gmail.com}
+
+\maketitle
+
+\section{Problemas}
+
+\subsection{esValido}
+% 1. Dado un toroide verifica si es válido.
+\begin{proc}{esValido}{\In t: $toroide$, \Out result: $\bool$}{}
+    \pre{\True}
+    % POST: - Tiene la misma cantidad de columnas en cada fila
+    %       - No es vacía
+    \post{$result = \True $ \Iff esToroideValido(t)}
+\end{proc}
+
+\subsection{posicionesVivas}
+
+% 2. Dado un toroide devuelva todas las posiciones vivas.
+\begin{proc}{posicionesVivas}{\In t: $toroide$, \Out vivas: $\TLista{\ent \times \ent}$}{}
+    \pre{esToroideValido(t)}
+    % La posición pertenece a result sí y sólo sí está viva
+    \post{(\forall i, j : \ent)(enRango(t, i, j) \implicaLuego ((i, j) \in vivas \Iff estaViva(t[i][j])))}
+\end{proc}
+
+\subsection{densidadPoblacion}
+% 3. Dado un toroide devuelva su densidad de población, es decir, la relación entre 
+% la cantidad de posiciones vivas y la cantidad total de posiciones
+\begin{proc}{densidadPoblacion}{\In t: $toroide$, \Out result: $\float$}{}
+    \pre{esToroideValido(t)}
+    % densidad = cantidad vivas / cantidad total
+    \post{result = cantidadVivas(t) / cantidadTotal(t)}
+    \aux{cantidadTotal}{t: $toroide$}{\ent}{
+        filas(t) \times columnas(t)
+    }
+\end{proc}
+
+\subsection{evolucionDePosicion}
+% 4. Dado un toroide y una posición del mismo, indique si dicha posición estaría viva 
+% luego de un tick.
+\begin{proc}{evolucionDePosicion}{\In t: $toroide$, \In posicion: $\ent \times \ent$, \Out result: $\bool$}{}
+    % la posicion tiene que estar en rango
+    \pre{esToroideValido(t) \yLuego enRango(t, posicion_0, posicion_1)}
+    % Evolución: 
+    %   - Viva con < 2 adyacentes vivas --> muere
+    %   - Viva con 2 o 3 adyacentes vivas --> vive
+    %   - Viva con > 3 adyacentes vivas --> muere
+    %   - Muerta con 3 adyacentes vivas --> vive
+    \post{result = valorLuegoDeEvolucion(t, posicion)} % estaViva y tiene 2 o 3 adyacentes o ¬estaViva y tiene 3 adyacentes
+    
+\end{proc}
+
+\subsection{evolucionToroide}
+% 5. Dado un toroide lo evoluciona un tick.
+\begin{proc}{evolucionToroide}{\Inout t: $toroide$}{}
+    \pre{esToroideValido(t) \yLuego t = T0}
+    % Quizás usando una sumatoria que recorra todo el toroide (actually, son 2)
+    % Y que en cada término de la sumatoria cambie el estado de esa posicion
+    % Alternativa (me gusta más): Definimios la metavariable t1, t = t2 sí y sólo sí cada 
+    % posición de t2 es igual a dicha posición de t1 pero evolucionada
+    \post{esEvolucion(T0, t)}
+\end{proc}
+
+\subsection{evolucionMultiple}
+% 6. Dado un toroide t y un natural k, devuelve el toroide resultante de evolucionar 
+% t por k ticks
+\begin{proc}{evolucionMultiple}{\In t: $toroide$, \In k: $\ent$, \Out result: $toroide$}{}
+    % k debe ser natural
+    \pre{esToroideValido(t) \land k \geq 0}
+    % result = t1 <=> LA SUMATORIA da 0
+    % LA SUMATORIA da 0 <=> la evolución de t = evolucion de t1 (se puede porque
+    % evolucionToroide es inout, si es distinta suma 1)
+
+    % se puede definir un aux recursivo que checkee la evolución por ticks hasta que sea 0
+    % y que devuelva un booleano si es igual
+    \post{ esEvolucionMultiple(t, result, k) }
+\end{proc}
+
+\subsection{esPeriodico\\}
+% 7. Dado un toroide devuelve si el mismo es periódico o no. En caso de serlo, 
+% se debe devolver en p la mínima cantidad de ticks en la cual se repite el patrón. 
+% Decimos que un toroide es periódico si pasada cierta cantidad de ticks, vuelve a tener
+% exactamente la misma configuración que tenía originalmente.
+\begin{proc}{esPeriodico}{\In t: $toroide$, \Inout p: $\ent$, \Out result: $\bool$}{}
+    \pre{esToroideValido(t)}
+
+    \post{result = \True \Iff (\exists k: \ent)(esEvolucionMultiple(t, t, k) 
+    \breakAndSpace{1.3em}\yLuego esElMenorKAntesDeEvolucion(t, t, k)) \yLuego p = k}
+\end{proc}
+
+\subsection{primosLejanos}
+% 8. Dados dos toroides, devuelve si uno es la evolución múltiple del otro.
+\begin{proc}{primosLejanos}{\In t1: $toroide$, \In t2: $toroide$, \Out primos: $\bool$}{}
+    \pre{esToroideValido(t1) \land esToroideValido(t2) \yLuego mismaDimension(t1, t2)}
+    \post{primos = \True \Iff 
+    ((\exists k: \ent)((k > 0)\breakAndSpace{1.3em}\yLuego(
+        (esEvolucionMultiple(t1, t2, k))
+        \oLuego
+        (esEvolucionMultiple(t2, t1, k))
+        )))}
+\end{proc}
+
+\subsection{seleccionNatural}
+% 9. Dada una secuencia de toroides, devuelve el índice de aquel toroide que más ticks 
+% tardará en morir. Se considera que un toroide muere cuando no tiene posiciones vivas.
+\begin{proc}{seleccionNatural}{\In ts: $\TLista{toroide}$, \Out res: $\ent$}{}
+    \pre{length(ts) > 0 \yLuego (todosToroidesValidos(ts) \yLuego algunToroideMuere(ts))}
+
+    \post{(0 \leq res < length(ts)) \yLuego tieneElMayorTiempoDeMuerte(ts[res], ts)}
+
+    \pred{todosToroidesValidos}{ts: $\TLista{toroide}$}{
+        (\forall t: $toroide$)((t \in ts) \implicaLuego esToroideValido(t))
+    }
+
+    \pred{algunToroideMuere}{ts: $\TLista{toroide}$}{
+        (\exists t: $toroide$)((t \in ts)\yLuego(muere(t)))
+    }
+
+    \pred{tieneElMayorTiempoDeMuerte}{t: $toroide$, ts: $\TLista{toroide}$}{
+        (\forall tx: toroide)((tx \in ts)\breakAndSpace{1.3em}\implicaLuego(cantidadDeTicksHastaMuerte(t) \geq cantidadDeTicksHastaMuerte(tx)))
+    }
+
+    \aux{cantidadDeTicksHastaMuerte}{t: $toroide$}{\ent} {
+        \breakAndSpace{1.3em}\IfThenElse{(\exists tx: toroide)(mismaDimension(t, tx) \yLuego cantidadVivas(tx) = 0)\breakAndSpace{1.3em}\yLuego(\exists k: \ent)(k > 0 \yLuego esEvolucionMultiple(t, tx, k) \yLuego esElMenorKAntesDeEvolucion(t, tx, k))\breakAndSpace{1em}}{
+            k
+        }{
+            -1
+        }
+    }
+
+    \pred{muere}{t: $toroide$}{
+        cantidadDeTicksHastaMuerte(t) \neq -1
+    }
+\end{proc}
+
+\subsection{fusionar}
+% 10. Dados dos toroides de la misma dimensión, devuelva otro (de la misma dimensión) 
+% que tenga vivas solo aquellas posiciones que estaban vivas en ambos toroides
+\begin{proc}{fusionar}{\In t1: $toroide$, \In t2: $toroide$, \Out res: $toroide$}{}
+    \pre{(esToroideValido(t1) \land esToroideValido(t2)) \yLuego mismaDimension(t1, t2)}
+    % res = tf <=> para todo i,j estaViva(tf[i][j]) 
+    % <=> estaViva(t1[i][j]) y estaViva(t2[i][j])
+    \post{mismaDimension(res, t1)\yLuego\breakAndSpace{1.3em}(\forall i, j: \ent)((enRango(res, i, j))\implicaLuego(estaViva(res, i, j) \breakAndSpace{1.1em}\Iff estaViva(t1, i, j) \land estaViva(t2, i, j)))}
+\end{proc}
+
+\subsection{vistaTrasladada}
+% 11. Dados dos toroides de la misma dimensión, indica si uno es el resultado de trasladar
+% la vista en el otro. Es decir, que moviendo el centro del eje de coordenadas de uno 
+% de los toroides en alguna dirección, se obtiene el otro.
+\begin{proc}{vistaTrasladada}{\In t1: $toroide$, \In t2: $toroide$, \Out res: $\bool$}{}
+    \pre{(esToroideValido(t1) \land esToroideValido(t2)) \yLuego mismaDimension(t1, t2)}
+    \post{res = \True \Iff esVistaTrasladada(t1, t2)}
+\end{proc}
+
+\subsection{enCrecimiento}
+% 12. Verifica si la menor superficie que cubre a todas las celdas vivas se va incrementar 
+% en el próximo tick
+\begin{proc}{enCrecimiento}{\In t: $toroide$, \Out res: $\bool$}{}
+    \pre{esToroideValido(t)}
+    \post{res = \True \Iff (\exists te: toroide)(esEvolucion(t, te)\yLuego crecioSuperficie(t, te))}
+
+    \pred{crecioSuperficie}{t: $toroide$, te: $toroide$}{
+        (\exists s, se: \ent)((esMenorSuperficieDeToroide(t, s) \land esMenorSuperficieDeToroide(te, se))\breakAndSpace{1em}\yLuego s < se)
+    }
+
+    \pred{esMenorSuperficieDeToroide}{t: $toroide$, s: \ent}{
+        % \\(\exists ts: \TLista{$toroide$})((compuestoPorVistasTrasladadas(ts, t) \y ordenadoSuperficieAscendente(ts)) \\\yLuego s = ts[0])
+        (\exists x: toroide)((esVistaTrasladada(t, x) \yLuego tieneLaMenorSuperficieDelToroide(x)))
+    }
+
+    \pred{tieneLaMenorSuperficieDelToroide}{t: $toroide$}{
+        (\forall x: toroide)(((x \neq t) \land esVistaTrasladada(t, x)) \implicaLuego esSuperficieMayorOIgual(x, t))
+    }
+
+    % \pred{compuestoPorVistasTrasladadas}{ts: \TLista{$toroide$}, t: $toroide$}{
+    %     (\forall tx: $toroide$)\\((tx \in ts)\implicaLuego esVistaTrasladada(tx, t))
+    % }
+    % \pred{ordenadoSuperficieAscendente}{ts: \TLista{$toroide$}}{
+    %     (\forall i: \ent)((0 < i < length(ts))\\\implicaLuego(esSuperficieMayorOIgual(ts[i], ts[i - 1]))))
+    % }
+    \pred{esSuperficieMayorOIgual}{t1: $toroide$, t2: $toroide$}{
+        (\exists s1, s2: \ent)((esSuperficie(t1, s1) \land esSuperficie(t2, s2))\yLuego s1 \geq s2)
+    }
+    \pred{esSuperficie}{t: $toroide$, s: \ent}{
+        % Tomar bolsa de superficies posibles y tomar la menor que tenga la misma cantidad
+        % de celdas vivas que nuestro toroide
+        % Tendríamos (xStart, yStart), (xEnd, yEnd) : Z x Z, de manera que contando las celdas
+        % vivas desde xStart a xEnd columnas en cada fila desde yStart a yEnd tiene la 
+        % misma cantidad que nuestro toroide original
+        % (\exists rs: \TLista{(\ent \times \ent)\times(\ent \times \ent)})
+        % \\(mantienenCantidadVivas(rs, t)\yLuego sonRectangulosDeToroide(rs, t)\\\yLuego ordenadoPorAreaAscendente(rs) \yLuego s = area(rs[0]))
+        (\exists rect: (\ent \times \ent)\times(\ent \times \ent))(esRectanguloDeToroide(rect, t) \yLuego mantieneCantidadVivas(rect, t) \breakAndSpace{1em}\yLuego esElMenorRectangulo(rect, t) \yLuego area(rect) = s)
+    }
+    \pred{mantieneCantidadVivas}{rect: $(\ent \times \ent)\times(\ent \times \ent)$, t: $toroide$}{
+        /* rect = (xStart, yStart) \times (xEnd, yEnd) */\breakAndSpace{1em}
+        contarVivasEnArea(t, rect) = cantidadVivas(t)
+    }
+    \pred{esRectanguloDeToroide}{rect: $(\ent \times \ent)\times(\ent \times \ent)$, t: $toroide$}{
+        /* rect = (xStart, yStart) \times (xEnd, yEnd) */\breakAndSpace{1em}
+        (0 \leq rect_{0_0} \leq rect_{1_0} \leq columnas(t))\land(0 \leq rect_{0_1} \leq rect_{1_1} \leq filas(t))
+    }
+    \pred{esElMenorRectangulo}{r1: $(\ent \times \ent)\times(\ent \times \ent)$, t: $toroide$}{
+        (\forall r2: (\ent \times \ent)\times(\ent \times \ent))((r2 \neq r1) \breakAndSpace{1em}\implicaLuego (\neg mantieneCantidadVivas(r2, t) \oLuego area(r2) \geq area(r1)))
+    }
+    % \pred{ordenadoPorAreaAscendente}{rs: $\TLista{(\ent \times \ent)\times(\ent \times \ent)}$}{
+    %     ((\forall i: \ent)((0 < i < length(rs))\implicaLuego(area(rs[i]) \geq area(rs[i - 1]))))
+    % }
+    $/* rect = (xStart, yStart) \times (xEnd, yEnd) */$\breakAndSpace{-1.9em}
+    \aux{contarVivasEnArea}{t: $toroide$, rect: $(\ent \times \ent)\times(\ent \times \ent)$}{\ent}{
+        \breakAndSpace{1em}\displaystyle \sum_{i = rect_{0_1}}^{rect_{1_1}}(\sum_{j = rect_{0_0}}^{rect_{1_0}} \IfThenElse{estaViva(t[i][j])}{1}{0})
+    }
+    \aux{area}{rect: $(\ent \times \ent)\times(\ent \times \ent)$}{\ent}{
+        \breakAndSpace{1em}/* base \times altura */
+        \breakAndSpace{1em}(rect_{1_0} - rect_{0_0}) \times (rect_{1_1} - rect_{0_1})
+    }
+\end{proc}
+
+\section{Predicados y Auxiliares generales}
+
+% === Ejercicio 1 ===
+    \gPred{noEsVacia}{t: $toroide$}{
+        $(length(t) \textgreater 0)$ \yLuego (\forall x: \TLista{\bool})((x \in t) \implicaLuego ($length(x) \textgreater 0$))
+        }
+    \gPred{esMatriz}{t: $toroide$}{
+    (\forall x, y: \TLista{\bool})((x, y \in t) \implicaLuego ($length(x) = length(y)$))
+    }
+    \gPred{esToroideValido}{t: $toroide$}{
+        (noEsVacia(t) \land esMatriz(t))
+    }
+    
+    \gPred{filas}{t: $toroide$}{
+        $length(t)$
+    }
+    \gPred{columnas}{t: $toroide$}{
+        \IfThenElse{$filas(t) \textgreater 0$}{$length(t[0])$}{0}
+    }
+% ===================
+% === Ejercicio 2 ===
+    \gPred{estaViva}{x: \bool}{
+        x = \True
+    }
+    \gPred{enRango}{t: $toroide$, i: \ent, j: \ent}{
+        (0 \leq i < filas(t)) \yLuego (0 \leq j < columnas(t))
+    }
+
+%====================
+
+% === Ejercicio 3 ===
+    \aux{cantidadVivas}{t: $toroide$}{\ent}{
+        \displaystyle \sum_{i=0}^{filas(t)-1}(\sum_{j=0}^{columnas(t)-1} \IfThenElse{estaViva(t[i][j])}{1}{0})
+    }
+
+% ===================
+% === Ejercicio 4 ===
+    \aux{valorLuegoDeEvolucion}{t: $toroide$, pos: $\ent \times \ent$}{\bool}{
+        \breakAndSpace{4em}\IfThenElse{seMantieneViva(t, pos) \oLuego vivePorReproduccion(t, pos)}{
+            \True
+        }{
+            \False
+        }
+    }
+    \gPred{seMantieneViva}{t: $toroide$, pos: $\ent \times \ent$}{
+        estaViva(t[posicion_0][posicion_1]) \yLuego 2 \leq vivasAdyacentes(t, posicion) \leq 3
+    }
+    \gPred{vivePorReproduccion}{t: $toroide$, pos: $\ent \times \ent$}{
+        (\neg estaViva(t[posicion_0][posicion_1]) \yLuego vivasAdyacentes(t, posicion) = 3)
+    }
+    \aux{vivasAdyacentes}{t: $toroide$, pos: $\ent \times \ent$}{\ent}{
+        \displaystyle\breakAndSpace{4em}(\sum_{i=-1}^1 \sum_{j=-1}^1 \IfThenElse{valorPosicionNormalizada(t, (pos_0 + i, pos_1 + j)) = \True}{ 1 }{ 0 }) 
+        \breakAndSpace{4em}- (\IfThenElse{estaViva(t, pos_0, pos_1)}{1}{0})
+    }
+    \aux{valorPosicionNormalizada}{t: $toroide$, pos: $\ent \times \ent$}{\bool}{
+        \breakAndSpace{4em}t[normalizarIndice(filas(t), pos_0)][normalizarIndice(columnas(t), pos_1)]
+    }
+    \aux{normalizarIndice}{limite: \ent, i: \ent}{\ent}{
+        \IfThenElse{i < 0}{
+            (i + limite)
+        }{\breakAndSpace{4em}
+            (\IfThenElse{i \geq limite}{
+                (i - limite)
+            }{
+                i
+            })
+        }
+    }
+
+%====================
+
+% ===================
+% === Ejercicio 5 ===
+    \gPred{mismaDimension}{t1: $toroide$, t2: $toroide$}{
+        filas(t1) = filas(t2) \yLuego columnas(t1) = columnas(t2)
+    }
+
+    \gPred{esEvolucion}{t: $toroide$, te: $toroide$}{
+        mismaDimension(t, te) \yLuego (\forall i, j : \ent)(enRango(t, i, j)\implicaLuego(te[i][j] = valorLuegoDeEvolucion(t, (i, j))))
+    }
+%====================
+
+%====================
+% === Ejercicio 6 ===
+
+    \gPred{esEvolucionMultiple}{t: $toroide$, te: $toroide$, k: \ent}{
+        (\exists ts: \TLista{toroide})((length(ts) = k + 1) \yLuego ts[0] = t \yLuego ordenadaPorEvolucion(ts) \breakAndSpace{4em}\yLuego te = ts[k])
+    }
+
+    \gPred{ordenadaPorEvolucion}{ts: $\TLista{toroide}$}{
+        (\forall i: \ent)((0 < i \leq k)\implicaLuego esEvolucion(ts[i - 1], ts[i]))
+    }
+
+%====================
+
+%====================
+% === Ejercicio 7 ===
+
+    /* Indica si el toroide $t$ llega a tener la forma de $te$ por primera vez en el k-ésimo tick*/\breakAndSpace{1.2em}
+    \gPred{esElMenorKAntesDeEvolucion}{t: $toroide$, te: $toroide$, k: \ent}{
+        (\forall i: \ent)((0 < i < k) \implicaLuego \neg esEvolucionMultiple(t, te, i))
+    }
+
+%====================
+
+%====================
+% === Ejercicio 11 ==
+
+    \gPred{esVistaTrasladada}{t1: $toroide$, t2: $toroide$}{
+        (\exists i, j: \ent)((\forall x, y : \ent)(enRango(t1, x, y)\breakAndSpace{4em}\implicaLuego(t1[x][y] = valorPosicionNormalizada(t2, (x + i, y + j)))))
+    }
+
+\section{Decisiones tomadas}
+Intuimos que una posición tiene 8 adyacentes independientemente del tamaño del toroide, 
+implicando esto que dentro de las adyacentes a una posición se pueden contar posiciones repetidas.
+
+\end{document}
