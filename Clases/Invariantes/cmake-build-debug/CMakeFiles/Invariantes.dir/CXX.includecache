@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/Invariantes/main.cpp
+iostream
+-
+vector
+-
+
