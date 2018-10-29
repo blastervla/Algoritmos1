@@ -34,8 +34,10 @@
 # IDE
 .idea
 .idea/*
+./*.idea
 
 # System
 .DS_STORE
 
-TP - Especificaci\303\263n/
+"TP - Especificaci\303\263n/"
+*.pdf
