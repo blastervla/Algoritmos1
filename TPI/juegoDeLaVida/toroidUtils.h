@@ -7,3 +7,4 @@
 int filas(toroide t);
 int columnas(toroide t);
 int cantidadVivas(toroide t);
+bool estaMuerto(toroide& t);

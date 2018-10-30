@@ -22,3 +22,15 @@ int cantidadVivas(toroide t) {
 
     return count;
 }
+
+bool estaMuerto(toroide& t){
+    bool estaMuerto = true;
+
+    for (vector<bool> fila : t) {
+        for (bool celda : fila) {
+            estaMuerto = estaMuerto && !celda;
+        }
+    }
+
+    return estaMuerto;
+}
