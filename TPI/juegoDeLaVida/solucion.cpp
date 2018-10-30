@@ -67,6 +67,13 @@ bool enCrecimiento(toroide t){
 }
 
 /******************************* EJERCICIO soloBloques (OPCIONAL) ***********************/
+/**
+ * Dado un toroide válido, dice si está compuesto puramente por bloques.
+ * Un bloque es una estructura formada por cuatro celdas vivas en forma de bloque (2 arriba y 2 abajo),
+ * rodeada por celdas muertas. Posee la particularidad de ser una estructura periódica.
+ * @param t
+ * @return
+ */
 bool soloBloques(toroide t){
     bool res;
     return res;
