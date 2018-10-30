@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching/src/ejercicios.cpp
+ejercicios.h
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching/src/ejercicios.h
+
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching/src/ejercicios.h
+iostream
+-
+string
+-
+vector
+-
+math.h
+/Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching/src/math.h
+

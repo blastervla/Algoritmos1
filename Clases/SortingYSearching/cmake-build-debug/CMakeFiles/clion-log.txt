@@ -1,0 +1,10 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching
+-- Found PythonInterp: /usr/local/bin/python (found version "2.7.15") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/vpomsztein/Documents/PrivateRepositories/Algoritmos1/Clases/SortingYSearching/cmake-build-debug
