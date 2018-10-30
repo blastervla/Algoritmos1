@@ -39,5 +39,10 @@
 # System
 .DS_STORE
 
+# TPE
 "TP - Especificaci\303\263n/"
 *.pdf
+
+# TPI
+juegoDeLaVidaTest
+cmake-build-debug/
