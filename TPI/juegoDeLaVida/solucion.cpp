@@ -141,9 +141,65 @@ bool vistaTrasladada(toroide t1, toroide t2) {
 }
 
 /******************************* EJERCICIO enCrecimiento ********************************/
+bool todasMuertasEnFila(vector<bool> &fila) {
+    bool todasMuertas = true;
+    for (bool celda : fila) {
+        todasMuertas = todasMuertas && !celda;
+    }
+    return todasMuertas;
+}
+
+bool todasMuertasEnColumna(toroide &t, int c) {
+    bool todasMuertas = true;
+    for (vector<bool> fila : t) {
+        todasMuertas = todasMuertas && !fila[c];
+    }
+    return todasMuertas;
+}
+
+void cercarCelulasVivas(toroide &t) {
+    toroide tCercado = t;
+    int deleted = 0;
+    for (int f = 0; f < filas(t); f++) {
+        if (todasMuertasEnFila(t[f])) {
+            tCercado.erase(t.begin() + f - deleted);
+            deleted++;
+        }
+    }
+
+    deleted = 0;
+    for (int c = 0; c < columnas(t); c++) {
+        if (todasMuertasEnColumna(t, c)) {
+            for (vector<bool> fila : t) {
+                fila.erase(fila.begin() + c - deleted);
+            }
+            deleted++;
+        }
+    }
+}
+
+int menorSuperficie(toroide &t) {
+    toroide tTrasladado = t;
+    int sup = filas(tTrasladado) * columnas(tTrasladado);
+    for (int f = 0; f < filas(tTrasladado); f++) {
+        rotarHaciaAbajo(tTrasladado);
+        for (int c = 0; c < columnas(tTrasladado); c++) {
+            rotarADerecha(tTrasladado);
+            toroide tPodado = tTrasladado;
+            cercarCelulasVivas(tPodado);
+            int supActual = filas(tPodado) * columnas(tPodado);
+            sup = sup < supActual ? supActual : sup;
+        }
+    }
+
+    return sup;
+}
+
 bool enCrecimiento(toroide t) {
-    bool res;
-    return res;
+    toroide te = t;
+    evolucionToroide(te);
+
+    return menorSuperficie(t) < menorSuperficie(te);
 }
 
 /******************************* EJERCICIO soloBloques (OPCIONAL) ***********************/
