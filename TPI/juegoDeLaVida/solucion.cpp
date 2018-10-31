@@ -79,6 +79,21 @@ bool primosLejanos(toroide t1, toroide t2) {
 }
 
 /****************************** EJERCICIO seleccionNatural ******************************/
+int ticksHastaMuerte(toroide &t) {
+    int ticks = -1;
+    if (esPeriodico(t, ticks))
+        return -1;
+
+    ticks = 0;
+    toroide te = t;
+    while (!estaMuerto(te)) {
+        ticks++;
+        evolucionToroide(te);
+    }
+
+    return ticks;
+}
+
 int seleccionNatural(vector<toroide> ts) {
     bool toroidesValidos = true;
     for (toroide t : ts) {
@@ -88,12 +103,13 @@ int seleccionNatural(vector<toroide> ts) {
         return -1;
 
     int indice = 0;
-    int ticksHastaMuerte = ticksHastaMuerte(t[0]);
+    int mayorTicksHastaMuerte = ticksHastaMuerte(ts[0]);
     for (int i = 0; i < ts.size(); i++) {
-        int ticksHastaMuerteActual = ticksHastaMuerte(t[i]);
-        if (ticksHastaMuerte != -1 && (ticksHastaMuerteActual == -1 || (ticksHastaMuerte(t[i]) > ticksHastaMuerte(t[indice])))) {
+        int ticksHastaMuerteActual = ticksHastaMuerte(ts[i]);
+        if (mayorTicksHastaMuerte != -1 &&
+            (ticksHastaMuerteActual == -1 || (ticksHastaMuerteActual > mayorTicksHastaMuerte))) {
             indice = i;
-            ticksHastaMuerte = ticksHastaMuerteActual;
+            mayorTicksHastaMuerte = ticksHastaMuerteActual;
         }
     }
 
@@ -109,6 +125,18 @@ toroide fusionar(toroide t1, toroide t2) {
 /****************************** EJERCICIO vistaTrasladada *******************************/
 bool vistaTrasladada(toroide t1, toroide t2) {
     bool res = false;
+    if (!esValido(t1) || !esValido(t2) || !mismaDimension(t1, t2))
+        return res;
+
+    // TODO: Check, quizás hay que hacerlo filas + 1 y columnas + 1 veces para dar toda la vuelta, not sure.
+    // Debería estar bien welp.
+    for (int f = 0; f < filas(t1); f++) {
+        rotarHaciaAbajo(t1);
+        for (int c = 0; c < columnas(t1); c++) {
+            rotarADerecha(t1);
+            res = res || t1 == t2;
+        }
+    }
     return res;
 }
 
