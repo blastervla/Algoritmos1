@@ -17,6 +17,7 @@ float densidadPoblacion(toroide t){
     return densidad;
 }
 
+
 /**************************** EJERCICIO evolucionDePosicion *****************************/
 bool evolucionDePosicion(toroide t, posicion p){
     return true;
