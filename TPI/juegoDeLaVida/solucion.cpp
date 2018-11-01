@@ -3,7 +3,16 @@
 
 /********************************** EJERCICIO esValido **********************************/
 bool esValido(toroide t) {
-    return true;
+    bool res = false;
+
+    if (filas(t) > 0 && columnas(t) > 0) {
+        res = true;
+        for (int f = 1; f < filas(t) && res; f++) {
+            if (t[f].size() != columnas(t))
+                res = false;
+        }
+    }
+    return res;
 }
 
 /****************************** EJERCICIO posicionesVivas *******************************/
