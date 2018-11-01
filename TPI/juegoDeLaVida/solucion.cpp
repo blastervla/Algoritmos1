@@ -66,7 +66,7 @@ bool esPeriodico(toroide t, int &p) {
         count++;
     }
 
-    if (estaMuerto(te)) {
+    if (te != t && estaMuerto(te)) {
         return false;
     } else {
         p = count;
@@ -142,22 +142,6 @@ bool vistaTrasladada(toroide t1, toroide t2) {
 }
 
 /******************************* EJERCICIO enCrecimiento ********************************/
-bool todasMuertasEnFila(vector<bool> &fila) {
-    bool todasMuertas = true;
-    for (bool celda : fila) {
-        todasMuertas = todasMuertas && !celda;
-    }
-    return todasMuertas;
-}
-
-bool todasMuertasEnColumna(toroide &t, int c) {
-    bool todasMuertas = true;
-    for (vector<bool> fila : t) {
-        todasMuertas = todasMuertas && !fila[c];
-    }
-    return todasMuertas;
-}
-
 void cercarCelulasVivas(toroide &t) {
     toroide tCercado = t;
     int deleted = 0;
@@ -181,14 +165,16 @@ void cercarCelulasVivas(toroide &t) {
 
 int menorSuperficie(toroide &t) {
     toroide tTrasladado = t;
-    int sup = filas(tTrasladado) * columnas(tTrasladado);
+    int sup = area(tTrasladado);
+
+    // Para cada vista trasladada, cerca la superficie (para conseguir la menor)
     for (int f = 0; f < filas(tTrasladado); f++) {
         rotarHaciaAbajo(tTrasladado);
         for (int c = 0; c < columnas(tTrasladado); c++) {
             rotarADerecha(tTrasladado);
             toroide tPodado = tTrasladado;
             cercarCelulasVivas(tPodado);
-            int supActual = filas(tPodado) * columnas(tPodado);
+            int supActual = area(tPodado);
             sup = sup < supActual ? supActual : sup;
         }
     }
@@ -197,6 +183,9 @@ int menorSuperficie(toroide &t) {
 }
 
 bool enCrecimiento(toroide t) {
+    if (!esValido(t))
+        return false;
+
     toroide te = t;
     evolucionToroide(te);
 
@@ -207,7 +196,7 @@ bool enCrecimiento(toroide t) {
 /**
  * Dado un toroide válido, dice si está compuesto puramente por bloques.
  * Un bloque es una estructura formada por cuatro celdas vivas en forma de bloque (2 arriba y 2 abajo),
- * rodeada por celdas muertas. Posee la particularidad de ser una estructura periódica.
+ * rodeada por celdas muertas. Posee la particularidad de ser una estructura periódica de período p = 1.
  * @param t
  * @return
  */

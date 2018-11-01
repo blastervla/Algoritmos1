@@ -14,6 +14,10 @@ int columnas(toroide &t) {
     return t[0].size();
 }
 
+int area(toroide &t) {
+    return filas(t) * columnas(t);
+}
+
 bool mismaDimension(toroide &t1, toroide &t2) {
     return filas(t1) == filas(t2) && columnas(t1) == columnas(t2);
 }
@@ -57,4 +61,20 @@ void rotarHaciaAbajo(toroide &t) {
     vector<bool> valToRotate = t.back();
     t.pop_back();
     t.insert(t.begin(), valToRotate);
+}
+
+bool todasMuertasEnFila(vector<bool> &fila) {
+    bool todasMuertas = true;
+    for (bool celda : fila) {
+        todasMuertas = todasMuertas && !celda;
+    }
+    return todasMuertas;
+}
+
+bool todasMuertasEnColumna(toroide &t, int c) {
+    bool todasMuertas = true;
+    for (vector<bool> fila : t) {
+        todasMuertas = todasMuertas && !fila[c];
+    }
+    return todasMuertas;
 }
