@@ -4,6 +4,14 @@
 
 using namespace std;
 
+TEST(evolucionToroideTEST, toroideInvalido){
+    toroide t = { {true, false, false}, {false}};
+    // Ver toroideDiagonalTresPorTresUnPaso
+    toroide evo_t = t;
+    evolucionToroide(t);
+    EXPECT_EQ(t, evo_t);
+}
+
 TEST(evolucionToroideTEST, toroideDiagonalTresPorTresUnPaso){
     toroide t = { {true, false, false}, {false, true, false}, {false, false, true} };
     //1*0 0 1*0

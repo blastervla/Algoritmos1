@@ -8,6 +8,8 @@ int filas(toroide &t);
 
 int columnas(toroide &t);
 
+int area(toroide &t);
+
 bool mismaDimension(toroide &t1, toroide &t2);
 
 int cantidadVivas(toroide &t);
@@ -19,3 +21,7 @@ posicion normalizarPosicion(toroide &t, posicion p);
 void rotarADerecha(toroide &t);
 
 void rotarHaciaAbajo(toroide &t);
+
+bool todasMuertasEnFila(vector<bool> &fila);
+
+bool todasMuertasEnColumna(toroide &t, int c);

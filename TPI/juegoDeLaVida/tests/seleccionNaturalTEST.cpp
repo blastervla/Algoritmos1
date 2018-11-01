@@ -4,6 +4,12 @@
 
 using namespace std;
 
+TEST(seleccionNaturalTEST, sinToroides){
+    vector<toroide> ts;
+    int res = seleccionNatural(ts);
+    EXPECT_EQ(res, -1);
+}
+
 TEST(seleccionNaturalTEST, toroideHorizontalPeriodico2){
     toroide t1 = { 
                   {false, false, false, false, false}, 
@@ -55,6 +61,25 @@ TEST(seleccionNaturalTEST, DiagonalVsHorizontal){
                   {true, false, false},
                   {false, true, false},
                   {false, false, true}}; 
+    vector<toroide> ts;
+    ts.push_back(t2);
+    ts.push_back(t1);
+    ts.push_back(t2);
+    int res = seleccionNatural(ts);
+    EXPECT_EQ(res, 1);
+}
+
+TEST(seleccionNaturalTEST, periodicoVsMortal){
+    toroide t1 = {
+            {false, false, false, false, false},
+            {false, false, false, false, false},
+            {false, true, true, true, false},
+            {false, false, false, false, false},
+            {false, false,false, false, false} };
+    toroide t2 = {
+            {false, false, false},
+            {false, true, false},
+            {false, false, true}};
     vector<toroide> ts;
     ts.push_back(t2);
     ts.push_back(t1);

@@ -4,28 +4,42 @@
 
 using namespace std;
 
-TEST(esPeriodicoTEST, toroideHorizontalPeriodico2){
-    toroide t = { 
-                  {false, false, false, false, false}, 
-                  {false, false, false, false, false}, 
-                  {false, true, true, true, false},
-                  {false, false, false, false, false}, 
-                  {false, false,false, false, false} };
+TEST(esPeriodicoTEST, toroideInvalido) {
+    toroide t = {{false, false, false},
+                 {true}};
+    int p = -1;
+    bool res = esPeriodico(t, p);
+    EXPECT_FALSE(res);
+    EXPECT_EQ(p, -1);
+}
+
+TEST(esPeriodicoTEST, toroideHorizontalPeriodico2) {
+    toroide t = {
+            {false, false, false, false, false},
+            {false, false, false, false, false},
+            {false, true,  true,  true,  false},
+            {false, false, false, false, false},
+            {false, false, false, false, false}};
     int p;
     bool res = esPeriodico(t, p);
     EXPECT_TRUE(res);
     EXPECT_EQ(p, 2);
 }
 
-TEST(esPeriodicoTEST, toroideTodoFalso){
-    toroide t = { {false, false, false}, {false, false, false}, {false, false, false} };
+TEST(esPeriodicoTEST, toroideTodoFalso) {
+    toroide t = {{false, false, false},
+                 {false, false, false},
+                 {false, false, false}};
     int p;
     bool res = esPeriodico(t, p);
     EXPECT_TRUE(res);
     EXPECT_EQ(p, 1);
 }
-TEST(esPeriodicoTEST, toroideDiagonal){
-    toroide t = { {true, false, false}, {false, true, false}, {false, false, true} };
+
+TEST(esPeriodicoTEST, toroideDiagonal) {
+    toroide t = {{true,  false, false},
+                 {false, true,  false},
+                 {false, false, true}};
     int p;
     bool res = esPeriodico(t, p);
     EXPECT_FALSE(res);
