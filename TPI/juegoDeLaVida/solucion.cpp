@@ -34,8 +34,14 @@ vector<posicion> posicionesVivas(toroide t) {
 
 /***************************** EJERCICIO densidadPoblacion ******************************/
 float densidadPoblacion(toroide t) {
-    float densidad = 0.0;
-    return densidad;
+
+    if (!esValido(t))
+        return 0.0;
+
+    int cantVivas = posicionesVivas(t).size();
+    int cantTotal = filas(t) * columnas(t);
+
+    return cantVivas / cantTotal;
 }
 
 
