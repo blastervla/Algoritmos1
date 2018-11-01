@@ -22,6 +22,13 @@ bool mismaDimension(toroide &t1, toroide &t2) {
     return filas(t1) == filas(t2) && columnas(t1) == columnas(t2);
 }
 
+bool posicionValida(toroide t, int f, int c) {
+    // Ver si vale la pena aclarar que el toroide sea válido, ya que de no serlo saldría del if directamente (hablando de evolucionDePosicion)
+    return 0 <= f < filas(t) && 0 <= c < columnas(t);
+}
+
+
+
 int cantidadVivas(toroide &t) {
     int count = 0;
     for (vector<bool> fila : t) {
