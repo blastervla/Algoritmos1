@@ -51,7 +51,20 @@ bool estaViva(toroide t, int f, int c){
 }
 
 int vivasAdyacentes(toroide t, int f, int c){
+    int count = 0;
 
+    for (int i = -1; i <= 1; i++) {
+        for (int j = -1; j <= 1; j++){
+            posicion p = make_tuple(f + i, c + j);
+            if (valorPosicionNormalizada(t, p))
+                count ++;
+        }
+    }
+    return count;
+}
+// valorLuegoDeEvolucion esta generada con el unico objetivo de limpiar la función evoluciónDePosicion
+bool valorLuegoDeEvloucion (toroide t, int f, int c){
+    return ((estaViva(t, f, c) && 2 <= vivasAdyacentes(t, f, c) <= 3) || (!estaViva(t, f, c) && vivasAdyacentes(t, f, c) == 3));
 }
 
 bool evolucionDePosicion(toroide t, posicion p) {
@@ -61,10 +74,7 @@ bool evolucionDePosicion(toroide t, posicion p) {
     if (!esValido(t) || !posicionValida(t, f, c))
         return false;
 
-    if ((estaViva(t, f, c) && 2 <= vivasAdyacentes(t, f, c) <= 3) || (!estaViva(t, f, c) && vivasAdyacentes(t,f,c) = 3))
-        return true;
-    else
-        return false;
+    return valorLuegoDeEvloucion(t, f, c);
 }
 
 /****************************** EJERCICIO evolucionToroide ******************************/
@@ -82,7 +92,7 @@ void evolucionToroide(toroide &t) {
 /***************************** EJERCICIO evolucionMultiple ******************************/
 toroide evolucionMultiple(toroide t, int k) {
     if (!esValido(t) || k < 1)
-        return t; //TODO
+        return t;
 
     for (int i=0; i < k; i++) {
         evolucionToroide(t);

@@ -20,6 +20,8 @@ bool estaMuerto(toroide &t);
 
 posicion normalizarPosicion(toroide &t, posicion p);
 
+bool valorPosicionNormalizada(toroide &t, posicion p);
+
 void rotarADerecha(toroide &t);
 
 void rotarHaciaAbajo(toroide &t);

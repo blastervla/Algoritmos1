@@ -56,6 +56,10 @@ posicion normalizarPosicion(toroide &t, posicion p) {
     return posicion(get<0>(p) % filas(t), get<1>(p) % columnas(t));
 }
 
+bool valorPosicionNormalizada(toroide &t, posicion p) {
+    return t[get<0>(p)][get<1>(p)];
+}
+
 void rotarADerecha(toroide &t) {
     for (int f = 0; f < filas(t); f++) {
         bool valToRotate = t[f].back();
