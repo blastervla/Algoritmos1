@@ -57,7 +57,8 @@ posicion normalizarPosicion(toroide &t, posicion p) {
 }
 
 bool valorPosicionNormalizada(toroide &t, posicion p) {
-    return t[get<0>(p)][get<1>(p)];
+    posicion pn = normalizarPosicion(t, p);
+    return t[get<0>(pn)][get<1>(pn)];
 }
 
 void rotarADerecha(toroide &t) {

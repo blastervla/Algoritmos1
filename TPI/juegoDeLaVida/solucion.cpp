@@ -60,6 +60,9 @@ int vivasAdyacentes(toroide t, int f, int c){
                 count ++;
         }
     }
+    if (estaViva(t, f, c))
+        count--;
+
     return count;
 }
 // valorLuegoDeEvolucion esta generada con el unico objetivo de limpiar la función evoluciónDePosicion
