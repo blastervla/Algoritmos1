@@ -12,6 +12,8 @@ int area(toroide &t);
 
 bool mismaDimension(toroide &t1, toroide &t2);
 
+bool posicionValida(toroide t, int f, int c);
+
 int cantidadVivas(toroide &t);
 
 bool estaMuerto(toroide &t);

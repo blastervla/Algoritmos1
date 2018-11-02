@@ -46,8 +46,25 @@ float densidadPoblacion(toroide t) {
 
 
 /**************************** EJERCICIO evolucionDePosicion *****************************/
+bool estaViva(toroide t, int f, int c){
+    return t[f][c];
+}
+
+int vivasAdyacentes(toroide t, int f, int c){
+
+}
+
 bool evolucionDePosicion(toroide t, posicion p) {
-    return true;
+    int f = get<0>(p);
+    int c = get<1>(p);
+
+    if (!esValido(t) || !posicionValida(t, f, c))
+        return false;
+
+    if ((estaViva(t, f, c) && 2 <= vivasAdyacentes(t, f, c) <= 3) || (!estaViva(t, f, c) && vivasAdyacentes(t,f,c) = 3))
+        return true;
+    else
+        return false;
 }
 
 /****************************** EJERCICIO evolucionToroide ******************************/
@@ -64,8 +81,13 @@ void evolucionToroide(toroide &t) {
 
 /***************************** EJERCICIO evolucionMultiple ******************************/
 toroide evolucionMultiple(toroide t, int k) {
-    toroide result;
-    return result;
+    if (!esValido(t) || k < 1)
+        return t; //TODO
+
+    for (int i=0; i < k; i++) {
+        evolucionToroide(t);
+    }
+    return t;
 }
 
 /******************************** EJERCICIO esPeriodico *********************************/
