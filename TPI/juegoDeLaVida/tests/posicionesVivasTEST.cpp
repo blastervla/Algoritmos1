@@ -15,13 +15,6 @@ TEST(posicionesVivasTEST, toroideVacio){
     EXPECT_EQ(vacio, res);
 }
 
-TEST(posicionesVivasTEST, toroideInvalido){
-    toroide t = { {false, true}, {false} };
-    vector<posicion> vacio;
-    vector<posicion> res = posicionesVivas(t);
-    EXPECT_EQ(vacio, res);
-}
-
 TEST(posicionesVivasTEST, toroideTodoPosicionesMuertas){
     vector<bool> filaMuerta = { false, false, false, false };
     toroide t = { filaMuerta, filaMuerta, filaMuerta, filaMuerta, filaMuerta, filaMuerta, filaMuerta };

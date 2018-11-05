@@ -4,13 +4,6 @@
 
 using namespace std;
 
-TEST(enCrecimientoTEST, toroideInvalido) {
-    toroide t1 = {
-            {true, false, false},
-            {false}};
-    EXPECT_FALSE(enCrecimiento(t1));
-}
-
 TEST(enCrecimientoTEST, toroideDiagonalSeHaceTodoTrue) {
     toroide t1 = {
             {true,  false, false},
