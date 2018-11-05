@@ -9,6 +9,7 @@ bool esValido(toroide t) {
     for (int f = 0; f < filas(t); f++) {
         esValido = esValido && t[f].size() == columnas(t);
     }
+
     return esValido;
 }
 
@@ -28,7 +29,6 @@ vector<posicion> posicionesVivas(toroide t) {
 
 /***************************** EJERCICIO densidadPoblacion ******************************/
 float densidadPoblacion(toroide t) {
-
     float cantVivas = posicionesVivas(t).size();
     float cantTotal = filas(t) * columnas(t);
 
