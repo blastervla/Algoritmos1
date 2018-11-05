@@ -3,16 +3,12 @@
 
 /********************************** EJERCICIO esValido **********************************/
 bool esValido(toroide t) {
-    bool res = false;
+    bool esValido = filas(t) > 0 && columnas(t) > 0;
 
-    if (filas(t) > 0 && columnas(t) > 0) {
-        res = true;
-        for (int f = 1; f < filas(t) && res; f++) {
-            if (t[f].size() != columnas(t))
-                res = false;
-        }
+    for (int f = 0; f < filas(t); f++) {
+        esValido = esValido && t[f].size() == columnas(t);
     }
-    return res;
+    return esValido;
 }
 
 /****************************** EJERCICIO posicionesVivas *******************************/
@@ -35,9 +31,6 @@ vector<posicion> posicionesVivas(toroide t) {
 /***************************** EJERCICIO densidadPoblacion ******************************/
 float densidadPoblacion(toroide t) {
 
-    if (!esValido(t))
-        return 0.0;
-
     int cantVivas = posicionesVivas(t).size();
     int cantTotal = filas(t) * columnas(t);
 
@@ -46,36 +39,26 @@ float densidadPoblacion(toroide t) {
 
 
 /**************************** EJERCICIO evolucionDePosicion *****************************/
-bool estaViva(toroide t, int f, int c){
-    return t[f][c];
-}
-
 int vivasAdyacentes(toroide t, int f, int c){
     int count = 0;
 
     for (int i = -1; i <= 1; i++) {
         for (int j = -1; j <= 1; j++){
-            posicion p = make_tuple(f + i, c + j);
-            if (valorPosicionNormalizada(t, p))
+            if ((i != 0 || j != 0) && valorPosicionNormalizada(t, posicion(f + i, c + j)))
                 count ++;
         }
     }
-    if (estaViva(t, f, c))
-        count--;
 
     return count;
 }
-// valorLuegoDeEvolucion esta generada con el unico objetivo de limpiar la función evoluciónDePosicion
+
 bool valorLuegoDeEvloucion (toroide t, int f, int c){
-    return ((estaViva(t, f, c) && 2 <= vivasAdyacentes(t, f, c) <= 3) || (!estaViva(t, f, c) && vivasAdyacentes(t, f, c) == 3));
+    return ((t[f][c] && ((2 <= vivasAdyacentes(t, f, c)) && vivasAdyacentes(t, f, c) <= 3)) || (!t[f][c] && vivasAdyacentes(t, f, c) == 3));
 }
 
 bool evolucionDePosicion(toroide t, posicion p) {
     int f = get<0>(p);
     int c = get<1>(p);
-
-    if (!esValido(t) || !posicionValida(t, f, c))
-        return false;
 
     return valorLuegoDeEvloucion(t, f, c);
 }
@@ -94,9 +77,6 @@ void evolucionToroide(toroide &t) {
 
 /***************************** EJERCICIO evolucionMultiple ******************************/
 toroide evolucionMultiple(toroide t, int k) {
-    if (!esValido(t) || k < 1)
-        return t;
-
     for (int i=0; i < k; i++) {
         evolucionToroide(t);
     }
@@ -126,12 +106,20 @@ bool esPeriodico(toroide t, int &p) {
 
 /******************************* EJERCICIO primosLejanos ********************************/
 bool primosLejanos(toroide t1, toroide t2) {
-    bool res = false;
-
-    if (!esValido(t1) || !esValido(t2) || !mismaDimension(t1,t2))
-        return res;
-
-    return res;
+    bool primos = false;
+    int ticks = -1;
+    
+    if (esPeriodico(t1, ticks)) {
+        for (int k = 1; k <= ticks; k++) {
+            primos = primos || t2 == evolucionMultiple(t1, k);
+        }
+    } else {
+        while (!estaMuerto(t1)){
+            evolucionToroide(t1);
+            primos = primos || t1 == t2;
+        }
+    }
+    return primos;
 }
 
 /****************************** EJERCICIO seleccionNatural ******************************/
@@ -174,8 +162,13 @@ int seleccionNatural(vector<toroide> ts) {
 
 /********************************** EJERCICIO fusionar **********************************/
 toroide fusionar(toroide t1, toroide t2) {
-    toroide t;
-    return t;
+    toroide fusion = t1;
+        for (int f = 0; f < filas(t1); f++) {
+            for (int c = 0; c < columnas(t1); c++) {
+                fusion[f][c] = t1[f][c] && t2[f][c];
+            }
+        }
+    return fusion;
 }
 
 /****************************** EJERCICIO vistaTrasladada *******************************/
