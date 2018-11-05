@@ -3,6 +3,7 @@
 //
 
 #include "toroidUtils.h"
+#include "vectorUtils.h"
 
 int filas(toroide &t) {
     return t.size();
@@ -53,14 +54,14 @@ void rotarADerecha(toroide &t) {
     for (int f = 0; f < filas(t); f++) {
         bool valToRotate = t[f].back();
         t[f].pop_back();
-        t[f].insert(t[f].begin(), valToRotate);
+        insert(t[f], 0, valToRotate);
     }
 }
 
 void rotarHaciaAbajo(toroide &t) {
     vector<bool> valToRotate = t.back();
     t.pop_back();
-    t.insert(t.begin(), valToRotate);
+    insert(t, 0, valToRotate);
 }
 
 bool todasMuertasEnFila(vector<bool> &fila) {
