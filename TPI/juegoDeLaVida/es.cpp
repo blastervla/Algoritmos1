@@ -7,7 +7,40 @@
 /******************************** EJERCICIO cargarToroide *******************************/
 toroide cargarToroide(string nombreArchivo, bool &status)
 {
-	toroide t;
+	ifstream fin;
+	fin.open(nombreArchivo, ifstream::in);
+	if (!fin.is_open()) {
+	    status = false;
+	    return toroide();
+	}
+
+	int filas, columnas = 0;
+	fin >> filas;
+    fin >> columnas;
+    toroide t(filas, vector<bool>(columnas));
+    int f = 0;
+    int c = 0;
+    while (f < filas && !fin.eof()) {
+        int posValue;
+        fin >> posValue;
+        t[f][c] = posValue == 1;
+        c++;
+        if (c >= columnas) {
+            c = 0;
+            f++;
+        }
+    }
+
+    int checksum;
+    fin >> checksum;
+
+    if (!fin.eof())
+        status = false;
+
+	fin.close();
+	if ((f != filas && c != 0) || checksum != cantidadVivas(t) || fin.is_open())
+	    status = false;
+
 	return t;
 }
 
