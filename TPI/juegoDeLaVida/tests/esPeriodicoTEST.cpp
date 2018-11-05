@@ -4,15 +4,6 @@
 
 using namespace std;
 
-TEST(esPeriodicoTEST, toroideInvalido) {
-    toroide t = {{false, false, false},
-                 {true}};
-    int p = -1;
-    bool res = esPeriodico(t, p);
-    EXPECT_FALSE(res);
-    EXPECT_EQ(p, -1);
-}
-
 TEST(esPeriodicoTEST, toroideHorizontalPeriodico2) {
     toroide t = {
             {false, false, false, false, false},
