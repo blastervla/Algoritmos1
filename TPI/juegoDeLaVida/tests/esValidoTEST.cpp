@@ -23,7 +23,7 @@ TEST(esValidoTEST, toroideVacio1Fila){
 TEST(esValidoTEST, toroideVacio5Filas){
     vector<bool> vacio;
     toroide t = { vacio, vacio, vacio, vacio, vacio };
-    EXPECT_TRUE(esValido(t));
+    EXPECT_FALSE(esValido(t));
 }
 
 TEST(esValidoTEST, distintasFilas){

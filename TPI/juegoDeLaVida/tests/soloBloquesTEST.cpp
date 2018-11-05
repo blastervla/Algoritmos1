@@ -3,21 +3,6 @@
 
 using namespace std;
 
-TEST(soloBloquesTEST, toroidesInvalidos) {
-    toroide t = {};
-    EXPECT_FALSE(soloBloques(t));
-
-    t = {{}};
-    EXPECT_FALSE(soloBloques(t));
-
-    t = {{false, false, false, false},
-         {false, true,  true,  false},
-         {false, true,  true,  false},
-         {false, false, false, false},
-         {false, false}};
-    EXPECT_FALSE(soloBloques(t));
-}
-
 TEST(soloBloquesTEST, toroideMuerto) {
     toroide t = {{false, false, false, false},
                  {false, false, false, false},

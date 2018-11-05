@@ -1,5 +1,6 @@
 #include "solucion.h"
 #include "toroidUtils.h"
+#include "vectorUtils.h"
 
 /********************************** EJERCICIO esValido **********************************/
 bool esValido(toroide t) {
@@ -28,50 +29,54 @@ vector<posicion> posicionesVivas(toroide t) {
 /***************************** EJERCICIO densidadPoblacion ******************************/
 float densidadPoblacion(toroide t) {
 
-    int cantVivas = posicionesVivas(t).size();
-    int cantTotal = filas(t) * columnas(t);
+    float cantVivas = posicionesVivas(t).size();
+    float cantTotal = filas(t) * columnas(t);
 
     return cantVivas / cantTotal;
 }
 
 
 /**************************** EJERCICIO evolucionDePosicion *****************************/
-int vivasAdyacentes(toroide t, int f, int c){
+int vivasAdyacentes(toroide t, int f, int c) {
     int count = 0;
 
     for (int i = -1; i <= 1; i++) {
-        for (int j = -1; j <= 1; j++){
+        for (int j = -1; j <= 1; j++) {
             if ((i != 0 || j != 0) && valorPosicionNormalizada(t, posicion(f + i, c + j)))
-                count ++;
+                count++;
         }
     }
 
     return count;
 }
 
-bool valorLuegoDeEvloucion (toroide t, int f, int c){
-    return ((t[f][c] && ((2 <= vivasAdyacentes(t, f, c)) && vivasAdyacentes(t, f, c) <= 3)) || (!t[f][c] && vivasAdyacentes(t, f, c) == 3));
+bool valorLuegoDeEvolucion(toroide t, int f, int c) {
+    return (t[f][c] && (2 <= vivasAdyacentes(t, f, c) && vivasAdyacentes(t, f, c) <= 3))
+           || (!t[f][c] && vivasAdyacentes(t, f, c) == 3);
 }
 
 bool evolucionDePosicion(toroide t, posicion p) {
     int f = get<0>(p);
     int c = get<1>(p);
 
-    return valorLuegoDeEvloucion(t, f, c);
+    return valorLuegoDeEvolucion(t, f, c);
 }
 
 /****************************** EJERCICIO evolucionToroide ******************************/
 void evolucionToroide(toroide &t) {
+    toroide te = t;
     for (int f = 0; f < filas(t); f++) {
         for (int c = 0; c < columnas(t); c++) {
-            t[f][c] = evolucionDePosicion(t, posicion(f, c));
+            te[f][c] = evolucionDePosicion(t, posicion(f, c));
         }
     }
+
+    t = te;
 }
 
 /***************************** EJERCICIO evolucionMultiple ******************************/
 toroide evolucionMultiple(toroide t, int k) {
-    for (int i=0; i < k; i++) {
+    for (int i = 0; i < k; i++) {
         evolucionToroide(t);
     }
     return t;
@@ -99,13 +104,13 @@ bool esPeriodico(toroide t, int &p) {
 bool primosLejanos(toroide t1, toroide t2) {
     bool primos = false;
     int ticks = -1;
-    
+
     if (esPeriodico(t1, ticks)) {
         for (int k = 1; k <= ticks; k++) {
             primos = primos || t2 == evolucionMultiple(t1, k);
         }
     } else {
-        while (!estaMuerto(t1)){
+        while (!estaMuerto(t1)) {
             evolucionToroide(t1);
             primos = primos || t1 == t2;
         }
@@ -147,11 +152,11 @@ int seleccionNatural(vector<toroide> ts) {
 /********************************** EJERCICIO fusionar **********************************/
 toroide fusionar(toroide t1, toroide t2) {
     toroide fusion = t1;
-        for (int f = 0; f < filas(t1); f++) {
-            for (int c = 0; c < columnas(t1); c++) {
-                fusion[f][c] = t1[f][c] && t2[f][c];
-            }
+    for (int f = 0; f < filas(t1); f++) {
+        for (int c = 0; c < columnas(t1); c++) {
+            fusion[f][c] = t1[f][c] && t2[f][c];
         }
+    }
     return fusion;
 }
 
@@ -177,7 +182,7 @@ void cercarCelulasVivas(toroide &t) {
     int deleted = 0;
     for (int f = 0; f < filas(t); f++) {
         if (todasMuertasEnFila(t[f])) {
-            tCercado.erase(t.begin() + f - deleted);
+            remove(tCercado, f - deleted);
             deleted++;
         }
     }
@@ -186,7 +191,7 @@ void cercarCelulasVivas(toroide &t) {
     for (int c = 0; c < columnas(t); c++) {
         if (todasMuertasEnColumna(t, c)) {
             for (vector<bool> fila : t) {
-                fila.erase(fila.begin() + c - deleted);
+                remove(fila, c - deleted);
             }
             deleted++;
         }
@@ -220,6 +225,40 @@ bool enCrecimiento(toroide t) {
 }
 
 /******************************* EJERCICIO soloBloques (OPCIONAL) ***********************/
+
+bool esCuadradoDeVivas(toroide &t, int x, int y) {
+    return valorPosicionNormalizada(t, posicion(x, y))
+           && valorPosicionNormalizada(t, posicion(x + 1, y))
+           && valorPosicionNormalizada(t, posicion(x, y + 1))
+           && valorPosicionNormalizada(t, posicion(x + 1, y + 1));
+}
+
+bool estaRodeadoDeMuertas(toroide &t, int x, int y) {
+    return !valorPosicionNormalizada(t, posicion(x - 1, y - 1))
+           && !valorPosicionNormalizada(t, posicion(x - 1, y))
+           && !valorPosicionNormalizada(t, posicion(x - 1, y + 1))
+           && !valorPosicionNormalizada(t, posicion(x - 1, y + 2))
+           && !valorPosicionNormalizada(t, posicion(x, y - 1))
+           && !valorPosicionNormalizada(t, posicion(x, y + 2))
+           && !valorPosicionNormalizada(t, posicion(x + 1, y - 1))
+           && !valorPosicionNormalizada(t, posicion(x + 1, y + 2))
+           && !valorPosicionNormalizada(t, posicion(x + 2, y - 1))
+           && !valorPosicionNormalizada(t, posicion(x + 2, y))
+           && !valorPosicionNormalizada(t, posicion(x + 2, y + 1))
+           && !valorPosicionNormalizada(t, posicion(x + 2, y + 2));
+}
+
+bool esBloqueSupIzq(toroide &t, int x, int y) {
+    return esCuadradoDeVivas(t, x, y) && estaRodeadoDeMuertas(t, x, y);
+}
+
+bool esBloque(toroide &t, int x, int y) {
+    return esBloqueSupIzq(t, x, y)
+           || esBloqueSupIzq(t, x - 1, y)
+           || esBloqueSupIzq(t, x, y - 1)
+           || esBloqueSupIzq(t, x - 1, y - 1);
+}
+
 /**
  * Dado un toroide válido, dice si está compuesto puramente por bloques.
  * Un bloque es una estructura formada por cuatro celdas vivas en forma de bloque (2 arriba y 2 abajo),
@@ -228,6 +267,14 @@ bool enCrecimiento(toroide t) {
  * @return
  */
 bool soloBloques(toroide t) {
-    bool res;
+    bool res = cantidadVivas(t) >= 4;
+
+    for (int f = 0; f < filas(t); f++) {
+        for (int c = 0; c < columnas(t); c++) {
+            if (t[f][c])
+                res = res && esBloque(t, f, c);
+        }
+    }
+
     return res;
 }

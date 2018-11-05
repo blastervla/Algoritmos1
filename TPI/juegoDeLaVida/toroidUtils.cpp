@@ -54,7 +54,13 @@ bool estaMuerto(toroide &t) {
 }
 
 posicion normalizarPosicion(toroide &t, posicion p) {
-    return posicion(get<0>(p) % filas(t), get<1>(p) % columnas(t));
+    int x = get<0>(p) % filas(t);
+    x = x < 0 ? x + filas(t) : x; // Esto esta para manejar valores negativos
+
+    int y = get<1>(p) % columnas(t);
+    y = y < 0 ? y + columnas(t) : y; // Esto esta para manejar valores negativos
+
+    return posicion(x, y);
 }
 
 bool valorPosicionNormalizada(toroide &t, posicion p) {

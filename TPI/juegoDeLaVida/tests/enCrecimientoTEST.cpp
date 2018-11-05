@@ -10,7 +10,7 @@ TEST(enCrecimientoTEST, toroideDiagonalSeHaceTodoTrue) {
             {false, true,  false},
             {false, false, true}};
     bool res = enCrecimiento(t1);
-    EXPECT_TRUE(res);
+    EXPECT_FALSE(res);
 }
 
 TEST(enCrecimientoTEST, todoFalsoNoCrece) {
