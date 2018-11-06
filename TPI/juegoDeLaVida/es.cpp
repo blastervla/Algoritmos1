@@ -5,23 +5,23 @@
 #include <fstream>
 
 /******************************** EJERCICIO cargarToroide *******************************/
-toroide cargarToroide(string nombreArchivo, bool &status)
-{
-	ifstream fin;
-	fin.open(nombreArchivo, ifstream::in);
-	if (!fin.is_open()) {
-	    status = false;
-	    return toroide();
-	}
+toroide cargarToroide(string nombreArchivo, bool &status) {
+    ifstream fin;
+    fin.open(nombreArchivo, ifstream::in);
+    if (fin.fail()) {
+        status = false;
+        return toroide();
+    }
 
-	int filas, columnas = 0;
-	fin >> filas;
+    int filas = 0;
+    int columnas = 0;
+    fin >> filas;
     fin >> columnas;
     toroide t(filas, vector<bool>(columnas));
     int f = 0;
     int c = 0;
     while (f < filas && !fin.eof()) {
-        int posValue;
+        int posValue = 0;
         fin >> posValue;
         t[f][c] = posValue == 1;
         c++;
@@ -34,34 +34,30 @@ toroide cargarToroide(string nombreArchivo, bool &status)
     int checksum;
     fin >> checksum;
 
-    if (!fin.eof())
-        status = false;
+    fin.close();
 
-	fin.close();
-	if ((f != filas && c != 0) || checksum != cantidadVivas(t) || fin.is_open())
-	    status = false;
-
-	return t;
+    status = (f == filas && c == 0) && checksum == cantidadVivas(t) && !fin.fail();
+    return t;
 }
 
 
 /******************************** EJERCICIO escribirToroide *****************************/
-bool escribirToroide(string nombreArchivo, toroide &t)
-{
-	if (nombreArchivo.size() == 0)
-		return false;
+bool escribirToroide(string nombreArchivo, toroide &t) {
+    if (nombreArchivo.size() == 0)
+        return false;
 
-	ofstream fout;
-	fout.open(nombreArchivo);
-	if (!fout.is_open())
-	    return false;
+    ofstream fout;
+    fout.open(nombreArchivo);
+    if (fout.fail())
+        return false;
 
-	fout << filas(t) << endl;
-    fout << columnas(t) << endl;
+    fout << filas(t) << " " << columnas(t) << endl;
 
     for (vector<bool> fila : t) {
-        for (bool celda : fila) {
-            fout << (celda ? 1 : 0);
+        for (int c = 0; c < fila.size(); c++) {
+            fout << (fila[c] ? 1 : 0);
+            if (c < fila.size() - 1)
+                fout << " ";
         }
         fout << endl;
     }
@@ -69,5 +65,5 @@ bool escribirToroide(string nombreArchivo, toroide &t)
     fout << cantidadVivas(t) << endl;
     fout.close();
 
-    return !fout.is_open();
+    return !fout.fail();
 }
