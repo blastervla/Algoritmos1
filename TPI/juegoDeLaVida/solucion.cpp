@@ -190,12 +190,14 @@ void cercarCelulasVivas(toroide &t) {
     deleted = 0;
     for (int c = 0; c < columnas(t); c++) {
         if (todasMuertasEnColumna(t, c)) {
-            for (vector<bool> fila : t) {
-                remove(fila, c - deleted);
+            for (int f = 0; f < tCercado.size(); f++) {
+                remove(tCercado[f], c - deleted);
             }
             deleted++;
         }
     }
+
+    t = tCercado;
 }
 
 int menorSuperficie(toroide &t) {
@@ -210,7 +212,7 @@ int menorSuperficie(toroide &t) {
             toroide tPodado = tTrasladado;
             cercarCelulasVivas(tPodado);
             int supActual = area(tPodado);
-            sup = sup < supActual ? supActual : sup;
+            sup = sup < supActual ? sup : supActual;
         }
     }
 

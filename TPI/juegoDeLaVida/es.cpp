@@ -61,7 +61,7 @@ bool escribirToroide(string nombreArchivo, toroide &t)
 
     for (vector<bool> fila : t) {
         for (bool celda : fila) {
-            fout << celda ? 1 : 0;
+            fout << (celda ? 1 : 0);
         }
         fout << endl;
     }

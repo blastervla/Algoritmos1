@@ -27,7 +27,7 @@ template<typename T>
 void remove(vector<T> &v, int pos) {
     vector<T> modified(v.size() - 1);
 
-    for (int i = 0; i < modified.size(); i++) {
+    for (int i = 0; i < v.size(); i++) {
         if (i < pos)
             modified[i] = v[i];
         else if (i > pos)
