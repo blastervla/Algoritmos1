@@ -11,14 +11,19 @@ using namespace std;
 // }
 
 TEST(esValidoTEST, toroideVacio){
-    toroide t = { vector<bool> () };
-    EXPECT_TRUE(esValido(t));
+    toroide t = {};
+    EXPECT_FALSE(esValido(t));
+}
+
+TEST(esValidoTEST, toroideVacio1Fila){
+    toroide t = {{}};
+    EXPECT_FALSE(esValido(t));
 }
 
 TEST(esValidoTEST, toroideVacio5Filas){
     vector<bool> vacio;
     toroide t = { vacio, vacio, vacio, vacio, vacio };
-    EXPECT_TRUE(esValido(t));
+    EXPECT_FALSE(esValido(t));
 }
 
 TEST(esValidoTEST, distintasFilas){
@@ -38,5 +43,13 @@ TEST(esValidoTEST, distintasFilasSinVacias){
 TEST(esValidoTEST, unoPorUno){
     vector<bool> a = { false };
     toroide t = { a };
+    EXPECT_TRUE(esValido(t));
+}
+
+TEST(esValidoTEST, tresPorTres){
+    toroide t = {
+    {true, false, false},
+    {false, false, true},
+    {false, true, false}};
     EXPECT_TRUE(esValido(t));
 }

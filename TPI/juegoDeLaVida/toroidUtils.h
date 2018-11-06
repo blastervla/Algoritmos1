@@ -11,13 +11,13 @@ int columnas(toroide &t);
 
 int area(toroide &t);
 
-bool mismaDimension(toroide &t1, toroide &t2);
-
 int cantidadVivas(toroide &t);
 
 bool estaMuerto(toroide &t);
 
 posicion normalizarPosicion(toroide &t, posicion p);
+
+bool valorPosicionNormalizada(toroide &t, posicion p);
 
 void rotarADerecha(toroide &t);
 

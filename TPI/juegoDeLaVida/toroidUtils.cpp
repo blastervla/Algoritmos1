@@ -10,17 +10,11 @@ int filas(toroide &t) {
 }
 
 int columnas(toroide &t) {
-    if (filas(t) == 0)
-        return 0;
     return t[0].size();
 }
 
 int area(toroide &t) {
     return filas(t) * columnas(t);
-}
-
-bool mismaDimension(toroide &t1, toroide &t2) {
-    return filas(t1) == filas(t2) && columnas(t1) == columnas(t2);
 }
 
 int cantidadVivas(toroide &t) {
@@ -47,7 +41,18 @@ bool estaMuerto(toroide &t) {
 }
 
 posicion normalizarPosicion(toroide &t, posicion p) {
-    return posicion(get<0>(p) % filas(t), get<1>(p) % columnas(t));
+    int x = get<0>(p) % filas(t);
+    x = x < 0 ? x + filas(t) : x; // Esto esta para manejar valores negativos
+
+    int y = get<1>(p) % columnas(t);
+    y = y < 0 ? y + columnas(t) : y; // Esto esta para manejar valores negativos
+
+    return posicion(x, y);
+}
+
+bool valorPosicionNormalizada(toroide &t, posicion p) {
+    posicion pn = normalizarPosicion(t, p);
+    return t[get<0>(pn)][get<1>(pn)];
 }
 
 void rotarADerecha(toroide &t) {

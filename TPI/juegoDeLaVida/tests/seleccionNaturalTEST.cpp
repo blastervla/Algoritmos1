@@ -4,13 +4,6 @@
 
 using namespace std;
 
-// TODO: Check: la especificación está mal!
-TEST(seleccionNaturalTEST, sinToroides){
-    vector<toroide> ts;
-    int res = seleccionNatural(ts);
-    EXPECT_EQ(res, 0);
-}
-
 TEST(seleccionNaturalTEST, toroideHorizontalPeriodico2){
     toroide t1 = { 
                   {false, false, false, false, false}, 
