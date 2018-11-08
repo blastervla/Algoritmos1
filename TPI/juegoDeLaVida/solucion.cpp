@@ -1,6 +1,6 @@
 #include "solucion.h"
-#include "toroidUtils.h"
-#include "vectorUtils.h"
+#include "utils/toroidUtils.h"
+#include "utils/vectorUtils.h"
 
 /********************************** EJERCICIO esValido **********************************/
 bool esValido(toroide t) {

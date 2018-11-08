@@ -2,8 +2,7 @@
 // Created by vladimir pomsztein on 30/10/2018.
 //
 
-// TODO: Mover a la carpeta utils
-#include "definiciones.h"
+#include "../definiciones.h"
 
 int filas(toroide &t);
 
