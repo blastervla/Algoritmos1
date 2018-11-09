@@ -127,6 +127,11 @@ bool primosLejanos(toroide t1, toroide t2) {
 }
 
 /****************************** EJERCICIO seleccionNatural ******************************/
+/**
+ * Devuelve la cantidad de ticks que tardará un toroide en morir. Devuelve -1 si no muere nunca
+ * @param t El toroide cuya cantidad de ticks hasta su muerte se quiere saber
+ * @return La cantidad de ticks hasta la muerte del toroide o -1 si este no muere.
+ */
 int ticksHastaMuerte(toroide &t) {
     int ticks = -1;
     if (esPeriodico(t, ticks))
@@ -147,9 +152,9 @@ int ticksHastaMuerte(toroide &t) {
 int seleccionNatural(vector<toroide> ts) {
     int indice = 0;
     int mayorTicksHastaMuerte = ticksHastaMuerte(ts[0]);
-    for (int i = 0; i < ts.size(); i++) {
+    for (int i = 1; i < ts.size(); i++) {
         int ticksHastaMuerteActual = ticksHastaMuerte(ts[i]);
-        if (mayorTicksHastaMuerte != -1 &&
+        if (mayorTicksHastaMuerte != -1 && // Todavía no tenemos uno que nunca muere
             (ticksHastaMuerteActual == -1 || (ticksHastaMuerteActual > mayorTicksHastaMuerte))) {
             indice = i;
             mayorTicksHastaMuerte = ticksHastaMuerteActual;
