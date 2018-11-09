@@ -85,9 +85,13 @@ toroide evolucionMultiple(toroide t, int k) {
 /******************************** EJERCICIO esPeriodico *********************************/
 bool esPeriodico(toroide t, int &p) {
     toroide te = t;
-    evolucionToroide(te);
+
     int count = 1;
-    while (te != t && !estaMuerto(te)) {
+    toroide tAnt = te;
+    evolucionToroide(te);
+    // Checkeamos te != tAnt porque si el anterior es igual al siguiente, estamos en un caso infinito
+    while (te != t && !estaMuerto(te) && te != tAnt) {
+        tAnt = te;
         evolucionToroide(te);
         count++;
     }
@@ -110,6 +114,8 @@ bool primosLejanos(toroide t1, toroide t2) {
             primos = primos || t2 == evolucionMultiple(t1, k);
         }
     } else {
+        primos = primos || t1 == t2;
+
         while (!estaMuerto(t1)) {
             evolucionToroide(t1);
             primos = primos || t1 == t2;
