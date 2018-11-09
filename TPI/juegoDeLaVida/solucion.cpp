@@ -116,7 +116,9 @@ bool primosLejanos(toroide t1, toroide t2) {
     } else {
         primos = t1 == t2;
 
-        while (!estaMuerto(t1)) {
+        vector<toroide> tAnts = {};
+        while (!contains(tAnts, t1) && !estaMuerto(t1)) {
+            tAnts.push_back(t1);
             evolucionToroide(t1);
             primos = primos || t1 == t2;
         }
@@ -132,12 +134,14 @@ int ticksHastaMuerte(toroide &t) {
 
     ticks = 0;
     toroide te = t;
-    while (!estaMuerto(te)) {
+    vector<toroide> tAnts = {};
+    while (!contains(tAnts, te) && !estaMuerto(te)) {
         ticks++;
+        tAnts.push_back(te);
         evolucionToroide(te);
     }
 
-    return ticks;
+    return estaMuerto(te) ? ticks : -1;
 }
 
 int seleccionNatural(vector<toroide> ts) {
