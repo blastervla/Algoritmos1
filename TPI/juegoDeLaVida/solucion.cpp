@@ -114,7 +114,7 @@ bool primosLejanos(toroide t1, toroide t2) {
             primos = primos || t2 == evolucionMultiple(t1, k);
         }
     } else {
-        primos = primos || t1 == t2;
+        primos = t1 == t2;
 
         while (!estaMuerto(t1)) {
             evolucionToroide(t1);
