@@ -87,16 +87,16 @@ bool esPeriodico(toroide t, int &p) {
     toroide te = t;
 
     int count = 1;
-    toroide tAnt = te;
+    vector<toroide> tAnts = {te};
     evolucionToroide(te);
     // Checkeamos te != tAnt porque si el anterior es igual al siguiente, estamos en un caso infinito
-    while (te != t && !estaMuerto(te) && te != tAnt) {
-        tAnt = te;
+    while (!contains(tAnts, te) && !estaMuerto(te)) {
+        tAnts.push_back(te);
         evolucionToroide(te);
         count++;
     }
 
-    if (te != t && estaMuerto(te)) {
+    if (te != t) {
         return false;
     } else {
         p = count;

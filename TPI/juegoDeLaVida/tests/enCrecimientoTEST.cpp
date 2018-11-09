@@ -67,3 +67,20 @@ TEST(enCrecimientoTEST, explosionCrece) {
             {false, false, false, false, false}};
     EXPECT_TRUE(enCrecimiento(t1));
 }
+
+TEST(enCrecimientoTEST, muyPodableCrece) {
+    toroide t1 = {
+            {false, false, false, false, true, false, false, false, false},
+            {false, false, false, false, true, false, false, false, false},
+            {false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false, false, false},
+            {false, false, false, true,  true,  true,  false, false, false},
+            {false, false, false, true,  false, true,  false, false, false},
+            {false, false, false, true,  false, true,  false, false, false},
+            {false, false, false, false, true,  false, false, false, false},
+            {false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, true, false, false, false, false}};
+    EXPECT_TRUE(enCrecimiento(t1));
+}

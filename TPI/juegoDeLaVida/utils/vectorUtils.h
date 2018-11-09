@@ -36,3 +36,11 @@ void remove(vector<T> &v, int pos) {
 
     v = modified;
 }
+
+template<typename T>
+bool contains(vector<T> &v, T elem) {
+    bool contains = false;
+    for (T e : v) contains = contains || e == elem;
+
+    return contains;
+}

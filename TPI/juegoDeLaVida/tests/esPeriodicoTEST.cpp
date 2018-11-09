@@ -70,8 +70,7 @@ TEST(esPeriodicoTEST, smallExplosion) {
     EXPECT_EQ(p, 0);
 }
 
-
-/*TEST(esPeriodicoTEST, smallExplosion) {
+TEST(esPeriodicoTEST, smallExplosionDesembocaEnPeriodico) {
     toroide t = {
             {false, false, false, false, false},
             {false, false, true,  false, false},
@@ -83,4 +82,4 @@ TEST(esPeriodicoTEST, smallExplosion) {
     bool res = esPeriodico(t, p);
     EXPECT_FALSE(res);
     EXPECT_EQ(p, 0);
-}*/
+}
