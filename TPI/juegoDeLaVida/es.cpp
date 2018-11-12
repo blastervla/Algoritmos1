@@ -20,7 +20,7 @@ toroide cargarToroide(string nombreArchivo, bool &status) {
     toroide t(filas, vector<bool>(columnas));
     int f = 0;
     int c = 0;
-    while (f < filas && !fin.eof()) {
+    while (f < filas && !fin.fail() && !fin.eof()) {
         int posValue = 0;
         fin >> posValue;
         t[f][c] = posValue == 1;
@@ -29,6 +29,11 @@ toroide cargarToroide(string nombreArchivo, bool &status) {
             c = 0;
             f++;
         }
+    }
+    
+    if (fin.fail()) {
+        status = false;
+        return t;
     }
 
     int checksum;
