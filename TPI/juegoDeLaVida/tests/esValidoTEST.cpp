@@ -33,6 +33,13 @@ TEST(esValidoTEST, distintasFilas){
     EXPECT_FALSE(esValido(t));
 }
 
+TEST(esValidoTEST, distintasFilasPrimeraNoVacia){
+    vector<bool> a = { true };
+    vector<bool> b = { };
+    toroide t = { a, b };
+    EXPECT_FALSE(esValido(t));
+}
+
 TEST(esValidoTEST, distintasFilasSinVacias){
     vector<bool> a = { false };
     vector<bool> b = { false, true };
@@ -51,5 +58,13 @@ TEST(esValidoTEST, tresPorTres){
     {true, false, false},
     {false, false, true},
     {false, true, false}};
+    EXPECT_TRUE(esValido(t));
+}
+
+TEST(esValidoTEST, diagonalTresPorTres) {
+    toroide t = { {true, false, false},
+                  {false, true, false},
+                  {false, false, true}
+    };
     EXPECT_TRUE(esValido(t));
 }

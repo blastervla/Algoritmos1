@@ -59,14 +59,14 @@ void rotarADerecha(toroide &t) {
     for (int f = 0; f < filas(t); f++) {
         bool valToRotate = t[f].back();
         t[f].pop_back();
-        insert(t[f], 0, valToRotate);
+        push_front(t[f], valToRotate);
     }
 }
 
 void rotarHaciaAbajo(toroide &t) {
     vector<bool> valToRotate = t.back();
     t.pop_back();
-    insert(t, 0, valToRotate);
+    push_front(t, valToRotate);
 }
 
 bool todasMuertasEnFila(vector<bool> &fila) {

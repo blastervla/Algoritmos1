@@ -2,21 +2,16 @@
 // Created by vladimir pomsztein on 05/11/2018.
 //
 
-// TODO: Mover a la carpeta utils
 #include <vector>
 
 using namespace std;
 
 template<typename T>
-void insert(vector<T> &v, int pos, T value) {
+void push_front(vector<T> &v, T value) {
     vector<T> modified(v.size() + 1);
 
-    for (int i = 0; i < modified.size(); i++) {
-        if (i == pos)
-            modified[i] = value;
-        else if (i < pos)
-            modified[i] = v[i];
-        else
+    modified[0] = value;
+    for (int i = 1; i < modified.size(); i++) {
             modified[i] = v[i - 1];
     }
 
