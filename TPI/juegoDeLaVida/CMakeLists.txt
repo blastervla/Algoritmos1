@@ -9,7 +9,7 @@ include(FindSDL2)
 add_subdirectory(lib/googletest-master)
 include_directories(lib/googletest-master/googletest/include)
 
-set(SOURCE_FILES_TEST main.cpp solucion.h solucion.cpp definiciones.h tests/soloBloquesTEST.cpp tests/esValidoTEST.cpp tests/posicionesVivasTEST.cpp tests/densidadPoblacionTEST.cpp tests/evolucionDePosicionTEST.cpp tests/evolucionMultipleTEST.cpp tests/evolucionToroideTEST.cpp tests/esPeriodicoTEST.cpp tests/primosLejanosTEST.cpp tests/seleccionNaturalTEST.cpp tests/fusionarTEST.cpp tests/vistaTrasladadaTEST.cpp tests/enCrecimientoTEST.cpp utils/vectorUtils.h utils/toroidUtils.cpp utils/toroidUtils.h)
+set(SOURCE_FILES_TEST main.cpp solucion.h solucion.cpp definiciones.h tests/ours/soloBloquesTEST.cpp tests/ours/esValidoTEST.cpp tests/esValidoTEST.cpp tests/posicionesVivasTEST.cpp tests/densidadPoblacionTEST.cpp tests/evolucionDePosicionTEST.cpp tests/evolucionMultipleTEST.cpp tests/evolucionToroideTEST.cpp tests/ours/esPeriodicoTEST.cpp tests/esPeriodicoTEST.cpp tests/ours/primosLejanosTEST.cpp tests/primosLejanosTEST.cpp tests/ours/seleccionNaturalTEST.cpp tests/seleccionNaturalTEST.cpp tests/fusionarTEST.cpp tests/ours/vistaTrasladadaTEST.cpp tests/vistaTrasladadaTEST.cpp tests/ours/enCrecimientoTEST.cpp tests/enCrecimientoTEST.cpp utils/vectorUtils.h utils/toroidUtils.cpp utils/toroidUtils.h)
 add_executable(juegoDeLaVidaTest ${SOURCE_FILES_TEST})
 
 set_target_properties(juegoDeLaVidaTest PROPERTIES COMPILE_FLAGS "-g --coverage")

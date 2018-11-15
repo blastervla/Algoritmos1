@@ -4,16 +4,16 @@
 
 using namespace std;
 
-TEST(enCrecimientoTEST, toroideDiagonalSeHaceTodoTrue) {
-    toroide t1 = {
-            {true,  false, false},
-            {false, true,  false},
-            {false, false, true}};
+TEST(enCrecimientoTEST, toroideDiagonalSeHaceTodoTrue){
+    toroide t1 = { 
+                  {true, false, false}, 
+                  {false, true, false}, 
+                  {false, false, true}};
     bool res = enCrecimiento(t1);
     EXPECT_FALSE(res);
 }
 
-TEST(enCrecimientoTEST, todoFalsoNoCrece) {
+TEST(enCrecimientoTEST, todoFalsoNoCrece){
     toroide t1 = {
             {false, false, false},
             {false, false, false},
@@ -70,67 +70,4 @@ TEST(enCrecimientoTEST, toroideLineaDeCuatroCrece){
             {false, false, false, false}};
     bool res = enCrecimiento(t1);
     EXPECT_TRUE(res);
-}
-
-TEST(enCrecimientoTEST, periodicoMantieneArea) {
-    toroide t1 = {
-            {false, false, false, false, false},
-            {false, true,  true,  true,  false},
-            {false, false, false, false, false}};
-    EXPECT_FALSE(enCrecimiento(t1));
-}
-
-TEST(enCrecimientoTEST, creceArea) {
-    toroide t1 = {
-            {false, false, false},
-            {true,  true,  true},
-            {false, false, false}};
-    EXPECT_TRUE(enCrecimiento(t1));
-}
-
-TEST(enCrecimientoTEST, periodicoMantieneAreaBorder) {
-    toroide t1 = {
-            {false, true,  true,  true, false},
-            {false, false, false, false, false},
-            {false, false, false, false, false},
-            {false, false, false, false, false},
-            {false, false, false, false, false},
-            {false, false, false, false, false}};
-    EXPECT_FALSE(enCrecimiento(t1));
-}
-
-TEST(enCrecimientoTEST, reduceAreaBorder) {
-    toroide t1 = {
-            {false, true,  true, false},
-            {true,  false, false, false},
-            {false, false, false, false}};
-    EXPECT_FALSE(enCrecimiento(t1));
-}
-
-TEST(enCrecimientoTEST, explosionCrece) {
-    toroide t1 = {
-            {false, false, false, false, false},
-            {false, true,  true,  true,  false},
-            {false, true,  false, true,  false},
-            {false, true,  false, true,  false},
-            {false, false, true,  false, false},
-            {false, false, false, false, false}};
-    EXPECT_TRUE(enCrecimiento(t1));
-}
-
-TEST(enCrecimientoTEST, muyPodableCrece) {
-    toroide t1 = {
-            {false, false, false, false, true, false, false, false, false},
-            {false, false, false, false, true, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false},
-            {false, false, false, true,  true,  true,  false, false, false},
-            {false, false, false, true,  false, true,  false, false, false},
-            {false, false, false, true,  false, true,  false, false, false},
-            {false, false, false, false, true,  false, false, false, false},
-            {false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, true, false, false, false, false}};
-    EXPECT_TRUE(enCrecimiento(t1));
 }
